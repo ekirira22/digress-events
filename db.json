@@ -1,0 +1,159 @@
+{
+    "events" : [
+        {
+            "id" : 1,
+            "name" : "Elegance in love",
+            "date" : "2024-02-14",
+            "time" : "06:00 PM - 11:00 PM",
+            "duration" : 1,
+            "image_url" : "https://www.ticketsasa.com/components/com_enmasse/upload/WhatsApp_Image_2024-02-07_at_21.17.54.jpeg1707330449.jpg",
+            "available_tickets" : 1300,
+            "tickets_sold" : 780,
+            "venue" : "Sarit - Park C"
+        },
+
+        {
+            "id" : 2,
+            "name" :"The Ben Live",
+            "date" : "2024-02-14",
+            "time":"06:00 PM - 11:59 PM",
+            "duration" :1,
+            "image_url":"https://www.ticketsasa.com/images/images.php?src=components/com_enmasse/upload/Comedy_store_Uganda_Art.PNG1707226748.jpg&h=320&w=320&zc=1&q=100&s=1&f=3,5|4,-5",
+            "available_tickets" :100,
+            "tickets_sold" :12,
+            "venue" :" Uma Show Grounds"
+        },
+
+        {
+            "id" : 3,
+            "name" :"The Boyz Malentines Edition (Boys Day Out)",
+            "date" : "2024-02-15",
+            "time":"04:00 PM - 11:59 PM",
+            "duration" :1,
+            "image_url":"https://www.ticketsasa.com/components/com_enmasse/upload/Capital_FM.jpeg1707140613.jpg",
+            "available_tickets" :20,
+            "tickets_sold" :133,
+            "venue" :"Padle Kenya, Gigiri Kenya"
+        },
+
+        {
+            "id" : 4,
+            "name" :"RnB FUSION",
+            "date" : "2024-02-16",
+            "time":"06:00 PM - 11:59 PM",
+            "duration" :1,
+            "image_url":"https://www.ticketsasa.com/components/com_enmasse/upload/IMG-20240202-WA0000.jpg1706872350.jpg",
+            "available_tickets" :5,
+            "tickets_sold" :200,
+            "venue" :" Simba Corp, Aspire Centre - 206 Chiromo Road"
+        },
+
+        {
+            "id" : 5,
+            "name" :"Legacy Illuminated: A Holographic Journey with Mohammed Abdullah Hassan",
+            "date" : "2024-02-18",
+            "time":"11:00 AM - 07:00 PM",
+            "duration" :2,
+            "image_url":"https://www.ticketsasa.com/components/com_enmasse/upload/Promote_Kenya_Art.jpeg1706808342.jpg",
+            "available_tickets": 68,
+            "tickets_sold" :160,
+            "venue" :" Nairobi National Museum, Louis Leakey Auditorium"
+        },
+
+        {
+            "id" : 6,
+            "name" :"Gordons Funfair - Uncoupled",
+            "date" : "2024-02-17",
+            "time":"02:00 PM - 02:00 AM",
+            "duration" :1,
+            "image_url":"https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg",
+            "available_tickets":0,
+            "tickets_sold" :220,
+            "venue" :" Ngong Racecourse, Waterfront Grounds"
+        },
+
+        {
+            "id" : 7,
+            "name" :"ENGAGE: WHATS LOVE GOT TO DO WITH IT - 2024",
+            "date" : "2024-02-18",
+            "time":"06:30 PM - 11:00 PM",
+            "duration" :2,
+            "image_url":"https://www.ticketsasa.com/components/com_enmasse/upload/WhatsApp_Image_2024-01-25_at_21.53.13.jpeg1706255373.jpg",
+            "available_tickets": 15,
+            "tickets_sold" :55,
+            "venue" :" Braebun Theatre, Gitanga Road"
+        },
+
+        {
+            "id" : 8,
+            "name" :"Delta Motorsport Track Attack Round One",
+            "date" : "2024-02-25",
+            "time":"08:00 AM - 06:00 PM",
+            "duration" :1,
+            "image_url":"https://www.ticketsasa.com/components/com_enmasse/upload/KNTC_Round_1.jpg1707377425.jpg",
+            "available_tickets": 14,
+            "tickets_sold" :43,
+            "venue" :" Whistling Moran Track, Ath River Off Mbsa Road"
+        },
+        
+        {
+            "id" : 15,
+            "name" : "Raha Fest 2024",
+            "date" : "2024-03-31",
+            "time" : "06:00 PM - 11:00 PM",
+            "duration" : 1,
+            "image_url" : "https://www.ticketsasa.com/components/com_enmasse/upload/davido__king_promise_1080_by_1080-4.jpg1707721788.jpg",
+            "available_tickets" : 1000,
+            "tickets_sold" : 230,
+            "venue" : "Uhuru Gardens"
+        },
+
+        {
+            "id" : 16,
+            "name" : "L-Boogie Super Soul Sunday",
+            "date" : "2024-04-11",
+            "time" : "06:00 PM - 11:59 PM",
+            "duration" : 2,
+            "image_url" : "https://www.ticketsasa.com/components/com_enmasse/upload/WhatsApp_Image_2024-01-30_at_10.29.41.jpeg1706599886.jpg",
+            "available_tickets" : 76,
+            "tickets_sold" : 120,
+            "venue" : "Carnivore Simba Saloon, Nairobi"
+        },
+
+        {
+            "id" : 17,
+            "name" : "The Virunga Mountains Marathon 2024",
+            "date" : "2024-05-04",
+            "time" : "06:30 AM - 02:00 PM",
+            "duration" : 3,
+            "image_url" : "https://www.ticketsasa.com/components/com_enmasse/upload/WhatsApp_Image_2024-01-21_at_15.01.08.jpeg1705838679.jpg",
+            "available_tickets" : 500,
+            "tickets_sold" : 290,
+            "venue" : "Shaza Grounds"
+        },
+
+        {
+            "id" : 18,
+            "name" : "Hapa Ni Wapi Gospel Concert",
+            "date" : "2024-02-29",
+            "time" : "12:00 PM - 06:00 PM",
+            "duration" : 2,
+            "image_url" : "https://www.ticketsasa.com/components/com_enmasse/upload/akili-02.jpg1707317289.jpg",
+            "available_tickets" : 430,
+            "tickets_sold" : 345,
+            "venue" : "KICC, Tsavo Ball Room"
+        },
+
+        {
+            "id" : 19,
+            "name" : "The Clean Energy Conference Australia Africa 2024.",
+            "date" : "2024-05-10",
+            "time" : "08:00 AM - 05:00 PM",
+            "duration" : 1,
+            "image_url" : "https://www.ticketsasa.com/components/com_enmasse/upload/Save_the_date_KE.jpeg1702969299.jpg",
+            "available_tickets" : 98,
+            "tickets_sold" : 20,
+            "venue" : "TBC"
+        }
+    ]
+}

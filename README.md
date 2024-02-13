@@ -21,35 +21,42 @@ HTML,Tailwind CSS, Vanilla JS, React JS
 
 ## User Stories
 
-    ### CORE DELIVERABLES ###
+### CORE DELIVERABLES
+1. A user can see a list of all events on the landing page
 
-        A user can see a list of all events on the landing page
+2. A user can see the latest event on the featured page
 
-        A user can see the latest event on the featured page
+3. Handle pagination on landing page
 
-        Handle pagination on landing page
+4. When a user clicks on an event. Redirect that user to the event component. Display details of the event and an option to book the event
 
-        When a user clicks on an event. Redirect that user to the event component. Display details of the event and an option to book the event
+5. When a user books a ticket. Decrement the available tickets on both the component and the backend and increment the tickets sold. When available tickets == 0 disable the buy ticket button
 
-        When a user books a ticket. Decrement the available tickets on both the component and the backend and increment the tickets sold. When available tickets == 0 disable the buy ticket button
+6. Have a booked events component that displays the events that the user has already booked
 
-        Have a booked events component that displays the events that the user has already booked
+7. Admin component - that can perform CRUD operations on events. Once an event is deleted from this component. It should also be subsequently deleted from the rest of the components
 
-        Admin component - that can perform CRUD operations on events. Once an event is deleted from this component. It should also be subsequently deleted from the rest of the components
+### ADVANCED DELIVERABLES
 
-        ADVANCED DELIVERABLES
+1. A user can search for a ticket.
 
-        A user can search for a ticket.
+2. A user can filter tickets based on date , venue or both
 
-        A user can filter tickets based on date , venue or both
-
-        Create a dummy payment gateway payment process when a user books a ticket.
+3. Create a dummy payment gateway payment process when a user books a ticket.
 
 ## Algorithmic view
  ...
 
 ## Relationships
-  APP (Parent component) : will be responsible for maintaing of state and prop sharing -> Children(see components)
+ - App.js (Parent component) : `will be responsible for maintaing of state and prop sharing -> Children(see components)`
+    -NavBar
+    
+    **- HomePage(Landing Page, Featured Event) --> Advanced Deliverable
+
+    - Events.js (Event List with Pagination) >> /tickets
+        - EventDetail.js (Displays the event card) >> /tickets/1
+    - About.js
+    - Admin.js (CRUD Functions on events)
   
 
 ## API Data
