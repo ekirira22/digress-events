@@ -50,13 +50,14 @@ HTML,Tailwind CSS, Vanilla JS, React JS
 ## Relationships
  - App.js (Parent component) : `will be responsible for maintaing of state and prop sharing -> Children(see components)`
     -NavBar
-    
+
     **- HomePage(Landing Page, Featured Event) --> Advanced Deliverable
 
     - Events.js (Event List with Pagination) >> /tickets
         - EventDetail.js (Displays the event card) >> /tickets/1
-    - About.js
     - Admin.js (CRUD Functions on events)
+    - About.js
+
   
 
 ## API Data

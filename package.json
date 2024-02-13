@@ -16,6 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "css-watch": "tailwindcss -i ./src/index.css -o ./src/styles.css --watch",
     "server": "json-server --watch db.json --port 4000"
   },
   "eslintConfig": {
@@ -35,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
   }
 }
