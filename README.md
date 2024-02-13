@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Digress-Events
+## Authors
+    1. Eric Maranga
+    2. Diana Tuei
+    3. Esther Wanjiku
+    4. Emily Matoke
+    5. Elvis Momanyi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation 
+  1. Git clone this repository to your working directory
+  2. Download tailwind dependencies. This project runs on tailwind css and vanilla JS
+  3. `npm install` to install all dependecies needed for this project
+  4. Launch project from live server using `npm start` to run on port 3000
+  5. Run `npm run watch` to track live changes to tailwind css
+  6. Run `npm serve` to watch db.json file on port 4000
+     **NB:**
+     Whenever you make a change to css remember to compile it using  npm run build-css if you're not running `npm run watch` . See tailwind.config.js for more
+     
+## Tech Stack
+HTML,Tailwind CSS, Vanilla JS, React JS
 
-## Available Scripts
+## User Stories
 
-In the project directory, you can run:
+    ### CORE DELIVERABLES ###
 
-### `npm start`
+        A user can see a list of all events on the landing page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+        A user can see the latest event on the featured page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+        Handle pagination on landing page
 
-### `npm test`
+        When a user clicks on an event. Redirect that user to the event component. Display details of the event and an option to book the event
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+        When a user books a ticket. Decrement the available tickets on both the component and the backend and increment the tickets sold. When available tickets == 0 disable the buy ticket button
 
-### `npm run build`
+        Have a booked events component that displays the events that the user has already booked
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+        Admin component - that can perform CRUD operations on events. Once an event is deleted from this component. It should also be subsequently deleted from the rest of the components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+        ADVANCED DELIVERABLES
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+        A user can search for a ticket.
 
-### `npm run eject`
+        A user can filter tickets based on date , venue or both
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+        Create a dummy payment gateway payment process when a user books a ticket.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Algorithmic view
+ ...
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Relationships
+  APP (Parent component) : will be responsible for maintaing of state and prop sharing -> Children(see components)
+  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## API Data
+Click link below to see API Data
+[API LINK]()
