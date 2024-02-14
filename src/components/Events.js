@@ -1,8 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
+import React, { useEffect, useState } from "react"
 export default function Events(){
-
+    const [allEvents,setAllEvents]=useState([])
+    useEffect(()=>{
+        fetchData()
+    },[])
+const fetchData=async()=>{
+    try {
+        const response=await fetch("http://localhost:3000/events")
+        const theEvents=await response.json() 
+        setAllEvents(theEvents)
+        
+    } catch (error) {
+        console.log("failed to fetch",error.statustext)
+    }}
+    console.log(allEvents)
 
     return (
         <>
@@ -23,43 +37,45 @@ export default function Events(){
                     <div className="bg-red-200 p-2 rounded-md shadow-md overflow-hidden relative">
 
                             <div>
-                            <img src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg" />
+                                <img alt="Poster Image" src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg" />
                             </div>
                             <div className="text-center">
                                 <span className="block">Date : 2024-03-14</span>
                                 <span className="block font-bold">Gordons FunFair uncoupled</span>
                             </div>
-                            <div className="bg-cyan-400 absolute px-4 rounded-full text-white ml-0 mt-0">
-                                <span> 0 </span>
+                            <div className="bg-cyan-400 px-4 rounded-full text-white top-0 right-0 mt-2 mr-2 absolute">
+                                <span> 10 </span>
                             </div>
                     </div>
 
                 </div>
 
                 {/* Tickets Display component -- Use grid formatting*/}
-
+               
+                
                 <h1 className="text-center font-bold text-red-500 text-xl">Available Tickets</h1>
                 <div className="event-grid">
-
-                    
-                        <div className="grid-card">
-                        <Link to={`/events/`+ 1} >View</Link>
-                        <img src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg"></img>
-                        <div className="text-center">
-                            <span className="block">Date : 2024-03-14</span>
-                            <span className="block font-bold">Gordons FunFair uncoupled</span>
-                            
+                     {allEvents.map((event)=>{
+                        return(                       
+                    <div className="grid-card" key={event.id} >
+                      <img src={event.image_url} alt="event poster" className="h-60 "/>                        
+                        <div className="text-center" >
+                            <span className="block" >{event.date} </span>
+                            <span className="block font-bold" >{event.name}</span>
                         </div>
                     </div>
-                    
+                     )
+                    })}
 
                     
                 </div>
                 
-                <hr className="mt-2 " />
+                </div>
 
                 
-            </div>
+                <hr className="mt-2 " />
+
+            
         </>
     )
-}
+    }

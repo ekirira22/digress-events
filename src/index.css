@@ -22,7 +22,7 @@ a:hover{
 }
 
 .event-grid{
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 items-center gap-4
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 items-center gap-4 place-items-center
 }
 
 .grid-card{
