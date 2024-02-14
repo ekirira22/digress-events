@@ -1,10 +1,11 @@
 import React from "react"
-import {useParams} from "react-router-dom"
+import {useParams, Link} from "react-router-dom"
 
 
 export default function EventDetails({clickedEvent}){
     const pageId= useParams()
     console.log(pageId)
+
 
     return (
         <>
@@ -12,7 +13,7 @@ export default function EventDetails({clickedEvent}){
                 <div className="bg-cyan-100 px-4 shadow-md">
                     {/* Header */}
                     <div className="flex items-center justify-between">
-                        <button className="mt-4 bg-red-500 text-white px-3 pb-1 rounded-full"><span className="text-2xl font-bold">&#171; </span><span className="text-sm font-semibold">GO BACK</span></button>
+                        <button className="mt-4 bg-red-500 text-white px-3 pb-1 rounded-full"><span className="text-2xl font-bold">&#171; </span><span className="text-sm font-semibold"></span><Link to={`/events`}>GO BACK</Link></button>
                         <h2 className="text-xl uppercase font-bold">Elegance in Love</h2>
                         <button className="btn">BUY TICKET</button>
                     </div>
