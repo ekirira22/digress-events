@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-export default function Events({allEvents}){
-   
+import Pagination from "./Pagination";
+export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage}){
     return (
         <>
             <div className="mx-40 m-auto">
@@ -57,6 +57,10 @@ export default function Events({allEvents}){
         
                 </div>
                 
+                </div>
+                <hr id="page" className="mt-4"></hr>
+                <div className="p-2 rounded-sm m-2">
+                    <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
                 </div>
 
                 

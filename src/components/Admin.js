@@ -1,8 +1,9 @@
 import { useFormik} from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
+import Pagination from "./Pagination";
 
-export default function Admin({allEvents, handleDelete, onAdd, onEdit}){
+export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerPage, totalPosts, paginate, currentPage}){
         //This state will be used to determine if the form is in add mode or edit mode (True => Add Mode False => Edit mode)
     const [addOrEdit, setAddOrEdit] = useState(true)
     const [editID, setEditID] = useState('')
@@ -51,6 +52,7 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit}){
         formik.setFieldValue("duration", eventdetail.duration)
         formik.setFieldValue("image_url", eventdetail.image_url)
         formik.setFieldValue("available_tickets", eventdetail.available_tickets)
+        formik.setFieldValue("tickets_sold", eventdetail.tickets_sold)
         formik.setFieldValue("venue", eventdetail.venue)
     }
         //Maps through and displays all the events from component passed down from App.js
@@ -150,7 +152,10 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit}){
                 {events}
             </div>
         </div>
-        <hr className="mt-2 " />
+        <hr className="mt-4" id="page"/>
+        <div className="p-4 rounded-sm m-2">
+                <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
+            </div>
         </>
     )
 }

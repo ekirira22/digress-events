@@ -24,6 +24,20 @@ function App() {
   },[])
 
 
+      //PAGINATION STATES
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postsPerPage, setPostsPerPage] = useState(6)
+      //WE CALCULATE PAGES BASED ON THE ABOVE
+    const indexOfLastPost = currentPage * postsPerPage
+    const indexOfFirsPost = indexOfLastPost - postsPerPage
+      //Current Posts that should be displayed now. We'll use this instead of allEvents
+    const currentEvents = allEvents.slice(indexOfFirsPost, indexOfLastPost)
+      //Set Page Number and How many pages to view
+    const paginate = (number) => setCurrentPage(number)
+    const changePosts = (number) => setPostsPerPage(number)
+
+
+
     //CRUD FUNCTIONS
 
   const handleDelete = async (eventdetail) => {
@@ -86,9 +100,9 @@ function App() {
       <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<About />} />
-      <Route exact path='/events' element={<Events allEvents={allEvents}/>}/> 
+      <Route exact path='/events' element={<Events allEvents={currentEvents} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>}/> 
       <Route path='/events/:id' element={<EventDetails />}/>
-      <Route path='/admin' element={<Admin allEvents={allEvents} handleDelete={handleDelete} onAdd={onAdd} onEdit={onEdit}/>} />
+      <Route path='/admin' element={<Admin allEvents={currentEvents} handleDelete={handleDelete} onAdd={onAdd} onEdit={onEdit} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>} />
       
       </Routes>
     </>
