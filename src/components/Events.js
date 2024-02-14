@@ -18,14 +18,14 @@ export default function Events(){
                     <div className="bg-red-200 p-2 rounded-md shadow-md overflow-hidden relative">
 
                             <div>
-                            <img src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg" />
+                                <img alt="Poster Image" src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg" />
                             </div>
                             <div className="text-center">
                                 <span className="block">Date : 2024-03-14</span>
                                 <span className="block font-bold">Gordons FunFair uncoupled</span>
                             </div>
-                            <div className="bg-cyan-400 absolute px-4 rounded-full text-white ml-0 mt-0">
-                                <span> 0 </span>
+                            <div className="bg-cyan-400 px-4 rounded-full text-white top-0 right-0 mt-2 mr-2 absolute">
+                                <span> 10 </span>
                             </div>
                     </div>
 
