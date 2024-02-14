@@ -52,7 +52,7 @@ export default function Admin(){
                         </div>
 
                         <div className="field">
-                            <Field name="time" placeholder="Event Time" className="input-field"/>
+                            <Field name="time" placeholder="Event Time Eg. 08:00 AM - 05:00 PM" className="input-field"/>
                             <ErrorMessage name="time" component="span" className="text-red-500" />
                             
                         </div>

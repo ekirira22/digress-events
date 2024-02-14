@@ -15,6 +15,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.error{
+  @apply text-red-500 font-semibold text-left block text-lg
+}
 
 .event-grid{
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 items-center gap-4 place-items-center
