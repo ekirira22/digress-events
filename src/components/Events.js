@@ -43,6 +43,7 @@ export default function Events(){
 
                     
                         <div className="grid-card">
+                        <Link to={`/events/`+ 1} >View</Link>
                         <img src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg"></img>
                         <div className="text-center">
                             <span className="block">Date : 2024-03-14</span>
