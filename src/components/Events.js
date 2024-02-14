@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 export default function Events(){
     const [allEvents,setAllEvents]=useState([])
     useEffect(()=>{
@@ -9,7 +9,7 @@ export default function Events(){
     },[])
 const fetchData=async()=>{
     try {
-        const response=await fetch("http://localhost:3000/events")
+        const response=await fetch("http://localhost:4000/events")
         const theEvents=await response.json() 
         setAllEvents(theEvents)
         
@@ -58,10 +58,11 @@ const fetchData=async()=>{
                      {allEvents.map((event)=>{
                         return(                       
                     <div className="grid-card" key={event.id} >
-                      <img src={event.image_url} alt="event poster" className="h-60 "/>                        
+                      <img src={event.image_url} alt="event poster" className="h-auto grayscale hover:grayscale-0 transition duration-500"/>                        
                         <div className="text-center" >
                             <span className="block" >{event.date} </span>
                             <span className="block font-bold" >{event.name}</span>
+                            <button className="btn-2"><Link to={"" + event.id}>VIEW EVENT</Link></button>
                         </div>
                     </div>
                      )

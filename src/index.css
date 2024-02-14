@@ -16,11 +16,6 @@ code {
     monospace;
 }
 
-a:hover{
-  color: red;
-  cursor: pointer;
-}
-
 .event-grid{
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 items-center gap-4 place-items-center
 }
@@ -39,5 +34,9 @@ a:hover{
 }
 .btn{
   @apply mt-4 bg-red-500 text-white px-3 py-1 rounded-full
+}
+
+.btn-2{
+  @apply mt-4 text-sm bg-yellow-500 text-white px-3 py-2 shadow-md rounded-sm hover:text-black hover:shadow-md transition duration-500
 }
 
