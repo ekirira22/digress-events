@@ -20,3 +20,24 @@ a:hover{
   color: red;
   cursor: pointer;
 }
+
+.event-grid{
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 items-center gap-4
+}
+
+.grid-card{
+  @apply bg-cyan-100 p-2 rounded-md shadow-md overflow-hidden
+}
+
+
+.field{
+  @apply flex gap-4 items-center mt-4
+}
+
+.input-field{
+  @apply w-3/4 h-10 px-4 border border-red-200 rounded-md outline-red-200
+}
+.btn{
+  @apply mt-4 bg-red-500 text-white px-3 py-1 rounded-full
+}
+
