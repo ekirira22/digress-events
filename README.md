@@ -44,6 +44,9 @@ HTML,Tailwind CSS, Vanilla JS, React JS
 
 3. Create a dummy payment gateway payment process when a user books a ticket.
 
+4. Removes a ticket from available tickets once it is sold out
+5. Increments the bought 
+
 ## Algorithmic view
  ...
 

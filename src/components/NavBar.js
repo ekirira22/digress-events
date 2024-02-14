@@ -7,7 +7,7 @@ export default function NavBar(){
                         <img src="https://www.ticketsasa.com/templates/ticketsasa/assets/img/logo.png"></img>
                     </div>   
 
-                    <div className="px-2 space-x-6 font-semibold text-md lg:text-lg mt-3 uppercase leading-normal">
+                    <div className="px-2 space-x-6 font-semibold text-md mt-3 uppercase leading-normal">
                         <a href="#">Home</a>
                         <a href="#">Events</a>
                         <a href="#">Purchased</a>
