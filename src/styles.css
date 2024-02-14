@@ -568,6 +568,14 @@ video {
   margin-top: 0px;
 }
 
+.ml-0 {
+  margin-left: 0px;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -618,6 +626,10 @@ video {
 
 .h-10 {
   height: 2.5rem;
+}
+
+.h-60 {
+  height: 15rem;
 }
 
 .w-1\/2 {
@@ -807,6 +819,7 @@ a:hover{
   margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
+  place-items: center;
   align-items: center;
   gap: 1rem;
 }
@@ -819,7 +832,7 @@ a:hover{
 
 @media (min-width: 1024px) {
   .event-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
