@@ -1,4 +1,20 @@
+import React, { useEffect, useState } from "react"
 export default function Events(){
+    const [allEvents,setAllEvents]=useState([])
+    useEffect(()=>{
+        fetchData()
+    },[])
+const fetchData=async()=>{
+    try {
+        const response=await fetch("http://localhost:3000/events")
+        const theEvents=await response.json() 
+        setAllEvents(theEvents)
+        
+    } catch (error) {
+        console.log("failed to fetch",error.statustext)
+    }}
+    console.log(allEvents)
+
     return (
         <>
             <div className="mx-40 m-auto">
@@ -32,24 +48,31 @@ export default function Events(){
                 </div>
 
                 {/* Tickets Display component -- Use grid formatting*/}
-
+               
+                
                 <h1 className="text-center font-bold text-red-500 text-xl">Available Tickets</h1>
                 <div className="event-grid">
-
-                    <div className="grid-card">
-                        <img src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg"></img>
-                        <div className="text-center">
-                            <span className="block">Date : 2024-03-14</span>
-                            <span className="block font-bold">Gordons FunFair uncoupled</span>
+                     {allEvents.map((event)=>{
+                        return(                       
+                    <div className="grid-card" key={event.id} >
+                      <img src={event.image_url} alt="event poster" className="h-60 "/>                        
+                        <div className="text-center" >
+                            <span className="block" >{event.date} </span>
+                            <span className="block font-bold" >{event.name}</span>
                         </div>
                     </div>
+                     )
+                    })}
 
                     
                 </div>
                 
+                </div>
+
+                
                 <hr className="mt-2 " />
 
-            </div>
+            
         </>
     )
-}
+    }
