@@ -45,9 +45,10 @@ export default function Events({allEvents}){
                             return(                       
                         <div className="grid-card" key={event.id} >
                         <img src={event.image_url} alt="event poster" className="h-auto grayscale hover:grayscale-0 transition duration-500"/>                        
-                            <div className="text-center" >
-                                <span className="block" >{event.date} </span>
+                            <div className="text-center mt-2" >
+                                <span className="block">Date: {event.date} </span>
                                 <span className="block font-bold" >{event.name}</span>
+                                <span className="block text-sm text-slate-500">Tickets Remaining {event.available_tickets}</span>
                                 <button className="btn-2"><Link to={"" + event.id}>VIEW EVENT</Link></button>
                             </div>
                         </div>

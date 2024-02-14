@@ -13,12 +13,12 @@ export default async function DataFetch (url,method,dataObj=null) {
         const response = await fetch(url,fetchObject)
           //Check if response is okay or not
         if(!response.ok){
-          console.log(`Error Message : ${response}`)
+          return ("Error Message: " + response + " " + response.message)
         }
         const data = await response.json()
         return data
 
     }catch(error){
-        console.log("Error Message: " + error)
+        return ("Error Message: " + error + " " +error.message)
     }
   }
