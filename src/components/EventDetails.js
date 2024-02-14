@@ -1,4 +1,11 @@
-export default function EventDetails(){
+import React from "react"
+import {useParams} from "react-router-dom"
+
+
+export default function EventDetails({clickedEvent}){
+    const pageId= useParams()
+    console.log(pageId)
+
     return (
         <>
             <div className="mx-40 m-auto mt-10">
