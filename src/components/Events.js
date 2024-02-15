@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
 import Pagination from "./Pagination";
 export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage}){
     return (
@@ -22,7 +21,7 @@ export default function Events({allEvents, postsPerPage, totalPosts, paginate, c
                     <div className="bg-red-200 p-2 rounded-md shadow-md overflow-hidden relative">
 
                             <div>
-                                <img alt="Poster Image" src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg" />
+                                <img alt="Poster" src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg" />
                             </div>
                             <div className="text-center">
                                 <span className="block">Date : 2024-03-14</span>
@@ -58,13 +57,12 @@ export default function Events({allEvents, postsPerPage, totalPosts, paginate, c
                 </div>
                 
                 </div>
-                <hr id="page" className="mt-4"></hr>
+
+                <hr className="mt-4 mx-40 m-auto"></hr>
                 <div className="p-2 rounded-sm m-2">
                     <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
                 </div>
-
-                
-                <hr className="mt-2 " />
+                <hr className="mt-2" id="page" />
 
             
         </>

@@ -34,7 +34,7 @@ function App() {
     const currentEvents = allEvents.slice(indexOfFirsPost, indexOfLastPost)
       //Set Page Number and How many pages to view
     const paginate = (number) => setCurrentPage(number)
-    const changePosts = (number) => setPostsPerPage(number)
+    // const changePosts = (number) => setPostsPerPage(number)
 
 
 
