@@ -18,10 +18,12 @@ function App() {
   const [allEvents, setAllEvents] = useState([])
     //Set Errors
   const [errors, setErrors] = useState('')
+
   useEffect(() => {
     const response = DataFetch(API, "GET")
     response.then(events => setAllEvents(events))
   },[])
+ 
 
 
       //PAGINATION STATES
@@ -35,8 +37,6 @@ function App() {
       //Set Page Number and How many pages to view
     const paginate = (number) => setCurrentPage(number)
     // const changePosts = (number) => setPostsPerPage(number)
-
-
 
     //CRUD FUNCTIONS
 
@@ -101,7 +101,7 @@ function App() {
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<About />} />
       <Route exact path='/events' element={<Events allEvents={currentEvents} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>}/> 
-      <Route path='/events/:id' element={<EventDetails />}/>
+      <Route path='/events/:id' element={<EventDetails onEdit={onEdit} allEvents={allEvents}/>}/>
       <Route path='/admin' element={<Admin allEvents={currentEvents} handleDelete={handleDelete} onAdd={onAdd} onEdit={onEdit} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>} />
       
       </Routes>

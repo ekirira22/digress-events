@@ -1,18 +1,7 @@
 {
   "events": [
     {
-      "id": 4,
-      "name": "RnB FUSION BLUES",
-      "date": "2024-02-16",
-      "time": "06:00 PM - 11:59 PM",
-      "duration": 1,
-      "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/IMG-20240202-WA0000.jpg1706872350.jpg",
-      "available_tickets": 5,
-      "tickets_sold": 0,
-      "venue": " Simba Corp, Aspire Centre - 206 Chiromo Road"
-    },
-    {
-      "id": 5,
+      "id": "5",
       "name": "Legacy Illuminated: A Holographic Journey with Hassan",
       "date": "2024-02-18",
       "time": "11:00 AM - 07:00 PM",
@@ -23,18 +12,18 @@
       "venue": " Nairobi National Museum, Louis Leakey Auditorium"
     },
     {
-      "id": 6,
-      "name": "Gordons Funfair - Uncoupled",
+      "id": "6",
+      "name": "Vodka Funfair - Uncoupled",
       "date": "2024-02-17",
       "time": "02:00 PM - 02:00 AM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg",
-      "available_tickets": 15,
+      "available_tickets": 6,
       "tickets_sold": 220,
       "venue": " Ngong Racecourse, Waterfront Grounds"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "ENGAGE: WHATS LOVE GOT TO DO WITH IT - 2024",
       "date": "2024-02-18",
       "time": "06:30 PM - 11:00 PM",
@@ -45,7 +34,7 @@
       "venue": " Braebun Theatre, Gitanga Road"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Delta Motorsport Track Attack Round One",
       "date": "2024-02-25",
       "time": "08:00 AM - 06:00 PM",
@@ -56,7 +45,7 @@
       "venue": " Whistling Moran Track, Ath River Off Mbsa Road"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "SME BUSINESS SUMMIT",
       "date": "2024-04-25",
       "time": "08:00 AM - 05:00 PM",
@@ -67,7 +56,7 @@
       "venue": "UON GROUNDS"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "The Maze 2024 1st Edition",
       "date": "2024-03-15",
       "time": "08:00 AM - 03:00 PM",
@@ -78,7 +67,7 @@
       "venue": "Labona Pronto, Capital Heights, Upper Hill"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "USIU-AFRICA CULTURE WEEK 2024",
       "date": "2024-05-05",
       "time": "08:00 AM - 11:00 PM",
@@ -89,7 +78,7 @@
       "venue": "USIU- AFRICA , PARKING LOT C"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Afrocoustic With Atemi Oyungu",
       "date": "2024-08-25",
       "time": "06:30 PM - 11:59 PM",
@@ -100,7 +89,7 @@
       "venue": "BaoBox"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Restoring Order In Families",
       "date": "2024-07-19",
       "time": "08:30 AM - 05:00 PM",
@@ -111,7 +100,7 @@
       "venue": "Movenpick Hotel - Westlands Nairobi"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "LIGHTS, LOVE & ACTION",
       "date": "2024-03-17",
       "time": "04:00 PM - 09:00 PM",
@@ -122,7 +111,7 @@
       "venue": "Nairobi Arboretum"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Raha Fest 2024",
       "date": "2024-03-31",
       "time": "06:00 PM - 11:00 PM",
@@ -133,7 +122,7 @@
       "venue": "Uhuru Gardens"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "L-Boogie Super Soul Sunday",
       "date": "2024-04-11",
       "time": "06:00 PM - 11:59 PM",
@@ -144,7 +133,7 @@
       "venue": "Carnivore Simba Saloon, Nairobi"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "The Virunga Mountains Marathon 2024",
       "date": "2024-05-04",
       "time": "06:30 AM - 02:00 PM",
@@ -155,7 +144,7 @@
       "venue": "Shaza Grounds"
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "Hapa Ni Wapi Gospel Concert",
       "date": "2024-02-29",
       "time": "12:00 PM - 06:00 PM",
@@ -166,7 +155,7 @@
       "venue": "KICC, Tsavo Ball Room"
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "The Clean Energy Conference Australia Africa 2024.",
       "date": "2024-05-10",
       "time": "08:00 AM - 05:00 PM",
@@ -177,7 +166,7 @@
       "venue": "TBC"
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "The Maze 2024 1st Edition",
       "date": "2024-02-27",
       "time": "04:00 PM - 09:00 PM",

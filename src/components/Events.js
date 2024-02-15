@@ -43,7 +43,7 @@ export default function Events({allEvents, postsPerPage, totalPosts, paginate, c
                         {allEvents.map((event)=>{
                             return(                       
                         <div className="grid-card" key={event.id} >
-                        <img src={event.image_url} alt="event poster" className="h-auto grayscale hover:grayscale-0 transition duration-500"/>                        
+                        <img src={event.image_url} alt="event poster" className="h-auto grayscale hover:grayscale-0 transition duration-500 object-fill"/>                        
                             <div className="text-center mt-2" >
                                 <span className="block">Date: {event.date} </span>
                                 <span className="block font-bold" >{event.name}</span>
