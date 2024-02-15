@@ -3,7 +3,7 @@ import {useParams, Link} from "react-router-dom"
 import DataFetch from "./DataFetch"
 
 
-export default function EventDetails({allEvents, setAllEvents, onEdit}){
+export default function EventDetails({allEvents, onEdit}){
     // console.log(allEvents)
     const pageId= useParams()
 
@@ -29,7 +29,7 @@ export default function EventDetails({allEvents, setAllEvents, onEdit}){
         if(event.available_tickets > 0){ 
             
             const available_tickets = event.available_tickets - 1
-            const updateTickets = {...event.available_tickets, available_tickets}
+            const updateTickets = {...event, available_tickets}
             
             setEventDetail(updateTickets)
             onEdit(event, pageId.id)

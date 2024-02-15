@@ -28,7 +28,7 @@ function App() {
 
       //PAGINATION STATES
     const [currentPage, setCurrentPage] = useState(1)
-    const [postsPerPage, setPostsPerPage] = useState(3)
+    const [postsPerPage, setPostsPerPage] = useState(6)
       //WE CALCULATE PAGES BASED ON THE ABOVE
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirsPost = indexOfLastPost - postsPerPage
