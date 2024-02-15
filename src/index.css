@@ -24,7 +24,11 @@ code {
 }
 
 .grid-card{
-  @apply bg-cyan-100 p-2 rounded-md shadow-md overflow-hidden
+  @apply bg-cyan-100 p-2 rounded-md shadow-md overflow-hidden w-full h-full
+}
+
+.event-image{
+  @apply w-full h-60 sm:h-72 object-cover grayscale hover:grayscale-0 transition duration-500
 }
 
 

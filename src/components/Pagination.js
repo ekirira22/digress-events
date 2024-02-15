@@ -16,7 +16,7 @@ export default function Pagination({postsPerPage, totalPosts, currentPage, pagin
     ({
       className: active === index ? "bg-black text-red-400 text-xl font-bold" : "text",
       variant: "text",
-      color: "gray",
+      color: "black",
       key: index,
       onClick: () => setActive(index),
     });
