@@ -16,6 +16,9 @@ function App() {
 
   //Set the state 
   const [allEvents, setAllEvents] = useState([])
+  const [boughtTickets, setBoughtTickets] = useState([])
+  console.log(boughtTickets)
+
     //Set Errors
   const [errors, setErrors] = useState('')
 
@@ -28,7 +31,7 @@ function App() {
 
       //PAGINATION STATES
     const [currentPage, setCurrentPage] = useState(1)
-    const [postsPerPage, setPostsPerPage] = useState(6)
+    const [postsPerPage, setPostsPerPage] = useState(4)
       //WE CALCULATE PAGES BASED ON THE ABOVE
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirsPost = indexOfLastPost - postsPerPage
@@ -100,8 +103,8 @@ function App() {
       <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<About />} />
-      <Route exact path='/events' element={<Events allEvents={currentEvents} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>}/> 
-      <Route path='/events/:id' element={<EventDetails onEdit={onEdit} allEvents={allEvents}/>}/>
+      <Route exact path='/events' element={<Events boughtTickets={boughtTickets} allEvents={currentEvents} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>}/> 
+      <Route path='/events/:id' element={<EventDetails allEvents={allEvents} onEdit={onEdit} boughtTickets={boughtTickets} setBoughtTickets={setBoughtTickets} />}/>
       <Route path='/admin' element={<Admin allEvents={currentEvents} handleDelete={handleDelete} onAdd={onAdd} onEdit={onEdit} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>} />
       
       </Routes>

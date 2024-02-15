@@ -20,7 +20,7 @@ code {
 }
 
 .event-grid{
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 items-center gap-4 place-items-center
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 items-center gap-4
 }
 
 .grid-card{
@@ -31,6 +31,13 @@ code {
   @apply w-full h-60 sm:h-72 object-cover grayscale hover:grayscale-0 transition duration-500
 }
 
+.bought-grid{
+  @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 items-center gap-4 grid-flow-dense h-fit
+}
+
+.bought-card-grid{
+  @apply bg-red-400 p-2 rounded-md shadow-md overflow-hidden relative h-1/2
+}
 
 .field{
   @apply text-left block items-center mt-4

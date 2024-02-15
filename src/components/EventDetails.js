@@ -1,59 +1,69 @@
 import React, { useEffect, useState } from "react"
 import {useParams, Link} from "react-router-dom"
-import DataFetch from "./DataFetch"
 
 
-export default function EventDetails({allEvents, onEdit}){
+export default function EventDetails({allEvents, onEdit, boughtTickets, setBoughtTickets}){
     // console.log(allEvents)
-    const pageId= useParams()
+    //Bug .. // All events is lost when page is refreshed!!
+    const myId= useParams()
+    const pageId = parseInt(myId.id)
+
 
     const[event, setEventDetail]=useState({})
+    const [soldOut, setSoldOut] = useState(false)
 
     
     useEffect(()=>{
         const eventDetail= allEvents.filter((event)=> {
-            return event.id === pageId.id
+            return event.id === pageId
         })
         setEventDetail(eventDetail[0])
-    }, [])
+        if(event.available_tickets < 1){
+            setSoldOut(true)
+        }
+    }, [pageId])
 
    
-    
-
-//     console.log(allEvents)
-
-//    const event = allEvents.find((event)=> event.id === pageId.id)
 
    const handleBuyClick = (event)=> {
-
         if(event.available_tickets > 0){ 
             
-            const available_tickets = event.available_tickets - 1
-            const updateTickets = {...event, available_tickets}
+            const new_tickets = event.available_tickets - 1
+            const updatedTicket = {...event, available_tickets : new_tickets}
             
-            setEventDetail(updateTickets)
-            onEdit(event, pageId.id)
+            setEventDetail(updatedTicket)
+                //Updates Component and DB
+            onEdit(updatedTicket, pageId)
+                //Updates bought event to component in Buy Tickets and number of tickets
+            boughtTicketsFn(updatedTicket)
+            alert("Thank you for purchasing with Digress Events")
+    } 
+
+    function boughtTicketsFn(updatedTicket){
+        //First check if the tickets already exists in bought tickets
+        //If it doesn't.. add it with an extra key of bought_tickets = 1
+        //If it does. Increment existing bought_tickets
+        const ticketExists = boughtTickets.find(ticket => {
+            return ticket.id === updatedTicket.id
+        })
+        if(ticketExists === undefined){
+            updatedTicket.bought_tickets = 1
+            // console.table(updatedTicket)
+            setBoughtTickets([...boughtTickets, updatedTicket])
+        }else{
+            //If it exists. Map through and increment bought_tickets by 1
+            boughtTickets.map(ticket => {
+                if(ticket.id === updatedTicket.id){
+                    return ticket.bought_tickets += 1
+                }
+            })
             
-        } else {
-            return alert("Ticket Sold Out")
+            // Map through component again and update
+
         }
-
-        }
-        
-        
-
-
-        // if(ticket > 0){
-        //     ticket -= 1
-        //     console.log(ticket)
-            
-        //     onEdit(eventDetail, eventDetail.id)
-        // } else {
-        //     alert("Ticket Sold Out!")
-        // }
-        
-   
-
+       
+    }
+ }
 
     return (
         <>
@@ -63,7 +73,7 @@ export default function EventDetails({allEvents, onEdit}){
                     <div className="flex items-center justify-between">
                         <button className="mt-4 bg-red-500 text-white px-3 pb-1 rounded-full"><span className="text-2xl font-bold">&#171; </span><span className="text-sm font-semibold"></span><Link to={`/events`}>GO BACK</Link></button>
                         <h2 className="text-xl uppercase font-bold">{event.name}</h2>
-                        <button onClick={()=> handleBuyClick(event)} className="btn">BUY TICKET</button>
+                        <button onClick={()=> handleBuyClick(event)} className="btn" {...soldOut ? "disabled" : ""}>{soldOut ? "SOLD OUT" : "BUY TICKET"}</button>
                     </div>
 
                     <hr className="mt-4"/>
@@ -77,7 +87,7 @@ export default function EventDetails({allEvents, onEdit}){
                         </div>
                         <div className="space-y-6 pt-10">
                             <p className="text-lg">
-                               <span className="font-semibold text-red-400">Duration: </span> {event.duration}
+                               <span className="font-semibold text-red-400">Duration: </span> {event.duration} Days
                             </p>
                             <p className="text-lg">
                                <span className="font-semibold text-red-400">Date: </span> {event.date}

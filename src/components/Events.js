@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom"
 import Pagination from "./Pagination";
-export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage}){
+export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage, boughtTickets}){
     return (
         <>
             <div>
@@ -17,21 +17,25 @@ export default function Events({allEvents, postsPerPage, totalPosts, paginate, c
                     <hr className="mt-2 " />
                     {/* component for displaying the bought tickets  */}
 
-                    <h1 className="text-center font-bold text-red-500 text-xl">Your Tickets</h1>
-                    <div className="event-grid">
-                        <div className="bg-red-200 p-2 rounded-md shadow-md overflow-hidden relative">
+                    <h1 className="text-center font-bold text-red-500 text-xl mt-10">Your Tickets</h1>
+                    <div className="bought-grid">
 
-                                <div>
-                                    <img alt="Poster" src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg" className="event-image"/>
+                        {boughtTickets.map(ticket => {
+                            return (
+                                <div key={ticket.id} className="bought-card-grid">
+                                    <div>
+                                        <Link to={`/events/${ticket.id}`}><img alt="Poster" src={ticket.image_url} className="event-image"/></Link>
+                                    </div>
+                                    <div className="text-center">
+                                        <span className="block">Date : {ticket.time}</span>
+                                        <span className="block font-bold bottom-2 left-1 p-1 rounded-sm absolute bg-cyan-700 text-white text-sm">{ticket.name}</span>
+                                    </div>
+                                    <div className="bg-cyan-700 px-4 rounded-sm text-white top-0 right-0 mt-2 mr-2 absolute">
+                                        <span className="text-sm"> {ticket.bought_tickets} Ticket(s)</span>
+                                    </div>
                                 </div>
-                                <div className="text-center">
-                                    <span className="block">Date : 2024-03-14</span>
-                                    <span className="block font-bold">Gordons FunFair uncoupled</span>
-                                </div>
-                                <div className="bg-cyan-400 px-4 rounded-full text-white top-0 right-0 mt-2 mr-2 absolute">
-                                    <span> 10 </span>
-                                </div>
-                        </div>
+                            )
+                        })}
 
                     </div>
 
@@ -49,7 +53,7 @@ export default function Events({allEvents, postsPerPage, totalPosts, paginate, c
                                     <span className="block">Date: {event.date} </span>
                                     <span className="block font-bold" >{event.name}</span>
                                     <span className="block text-sm text-slate-500 mb-2">Tickets Remaining {event.available_tickets}</span>
-                                    <button className="btn-2 top-0 left-4 absolute"><Link to={"" + event.id}>VIEW EVENT</Link></button>
+                                    <button className="btn-2 top-0 left-4 absolute"><Link to={"/events/" + event.id}>VIEW EVENT</Link></button>
                                 </div>
                             </div>
                             )
