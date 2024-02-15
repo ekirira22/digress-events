@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom"
 import Pagination from "./Pagination";
-export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage, boughtTickets}){
+export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage, boughtTickets, setSearchValue}){
     return (
         <>
             <div>
@@ -9,8 +9,7 @@ export default function Events({allEvents, postsPerPage, totalPosts, paginate, c
                     {/* Search bar component    */}
                     <div className="text-center mt-4">
                         <form>
-                            <input type="text" placeholder="Search for Event" className="px-2 w-1/2 h-10 outline-cyan-200" />
-                            <button className="btn">Submit</button>
+                            <input type="text" placeholder="Search for Event" className="px-2 w-1/2 h-10 outline-cyan-200" onChange={(e) => setSearchValue(e.target.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase())} />
                         </form>
                     </div>
 

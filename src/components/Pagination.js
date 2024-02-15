@@ -52,7 +52,9 @@ export default function Pagination({postsPerPage, totalPosts, currentPage, pagin
           </Button>
             <div className="flex items-center space-x-10">
               {pageNumbers.map(page => {
-                return <IconButton {...getItemProps(page)}> <a onClick={() => paginate(page)} href="#page">{page}</a> </IconButton>
+                // <IconButton {...getItemProps(page)}>
+                // </IconButton>
+                return  <a onClick={() => paginate(page)} href="#page">{page}</a> 
               })}
             </div>
           <Button

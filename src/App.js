@@ -17,6 +17,7 @@ function App() {
   //Set the state 
   const [allEvents, setAllEvents] = useState([])
   const [boughtTickets, setBoughtTickets] = useState([])
+  // const [searchValue, setSearchValue] = useState('')
   console.log(boughtTickets)
 
     //Set Errors
@@ -26,7 +27,17 @@ function App() {
     const response = DataFetch(API, "GET")
     response.then(events => setAllEvents(events))
   },[])
- 
+
+  const setSearchValue = (val) => {
+    //FILTER EVENTS AND SET ALL EVENTS TO RESULTS
+      //Filter transactions and pass value to the Transactions component //Filters based on category or description
+      const filteredEvents = allEvents.filter((event) => {
+        if(event.name.toLowerCase().includes(val) || event.venue.toLowerCase().includes(val)){
+          return true
+        }
+      })
+      setAllEvents(filteredEvents)
+  }
 
 
       //PAGINATION STATES
@@ -103,7 +114,7 @@ function App() {
       <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<About />} />
-      <Route exact path='/events' element={<Events boughtTickets={boughtTickets} allEvents={currentEvents} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>}/> 
+      <Route exact path='/events' element={<Events setSearchValue={setSearchValue} boughtTickets={boughtTickets} allEvents={currentEvents} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>}/> 
       <Route path='/events/:id' element={<EventDetails allEvents={allEvents} onEdit={onEdit} boughtTickets={boughtTickets} setBoughtTickets={setBoughtTickets} />}/>
       <Route path='/admin' element={<Admin allEvents={currentEvents} handleDelete={handleDelete} onAdd={onAdd} onEdit={onEdit} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>} />
       
