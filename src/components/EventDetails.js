@@ -35,7 +35,7 @@ export default function EventDetails({allEvents, onEdit}){
             onEdit(event, pageId.id)
             
         } else {
-            return console.log("Ticket Sold Out")
+            return alert("Ticket Sold Out")
         }
 
         }
