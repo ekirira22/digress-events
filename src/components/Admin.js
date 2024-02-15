@@ -1,44 +1,82 @@
-import { Formik, Form, ErrorMessage, Field } from "formik";
+import { useFormik} from "formik";
+import { useState } from "react";
 import * as Yup from "yup";
+import Pagination from "./Pagination";
 
-export default function Admin(){
-    const initialValues = {
-        name :"",
-        date : "",
-        time:"",
-        duration :"",
-        image_url:"",
-        available_tickets: "",
-        tickets_sold :0,
-        venue : ""
+export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerPage, totalPosts, paginate, currentPage}){
+        //This state will be used to determine if the form is in add mode or edit mode (True => Add Mode False => Edit mode)
+    const [addOrEdit, setAddOrEdit] = useState(true)
+    const [editID, setEditID] = useState('')
+        //Initialize values to use in Formik Component
+    const formik = useFormik({
+        enableReinitialize : true,
+        initialValues : {
+            name :"",
+            date : "",
+            time:"",
+            duration :"",
+            image_url:"",
+            available_tickets: "",
+            tickets_sold: 0,
+            venue : ""
+        },
+        onSubmit : values => {
+            if(addOrEdit){
+                    //Pass values to callback, reset Form
+                onAdd(values)
+                formik.resetForm()
+            }else{
+                    //Pass values to callback, reset Form, set Add Form to true
+                onEdit(values,editID)
+                formik.resetForm()
+                setAddOrEdit(true)
+            }
+        },
+        onReset : () => {
+                //Upon reset set form to original state
+            setAddOrEdit(true)
+        }
+   })
+
+
+    const handleEdit = (eventdetail) => {
+            //Set State to Editing Form
+            // Set ID of what is being edited
+            //Research a better way to modularize this
+        setAddOrEdit(false)
+        setEditID(eventdetail.id)
+
+        formik.setFieldValue("name", eventdetail.name)
+        formik.setFieldValue("date", eventdetail.date)
+        formik.setFieldValue("time", eventdetail.time)
+        formik.setFieldValue("duration", eventdetail.duration)
+        formik.setFieldValue("image_url", eventdetail.image_url)
+        formik.setFieldValue("available_tickets", eventdetail.available_tickets)
+        formik.setFieldValue("tickets_sold", eventdetail.tickets_sold)
+        formik.setFieldValue("venue", eventdetail.venue)
     }
-
-    const handleSubmit = (values) => {
-        console.log("onsubmit", values)
-    }
-
-    const validationSchema = Yup.object({
-        name: Yup.string()
-            .required("Event Name is required"),
-        date: Yup.string()
-            .required("Event Date is required"),
-        time: Yup.string()
-            .required("Event Time is required"),
-        duration: Yup.number()
-            .required("Event Duration is required"),
-        image_url: Yup.string()
-            .required("Event Poster is required"),
-        available_tickets: Yup.number()
-            .required("Available Tickets is required"),
-        venue: Yup.string()
-            .required("Event Venue is required"),
+        //Maps through and displays all the events from component passed down from App.js
+    const events = allEvents.map(eventdetail => {
+        return (
+            <div key={eventdetail.id} className="grid-card">
+                    <img src={eventdetail.image_url} />
+                    <div className="text-center mt-2">
+                        <span className="block font-bold">{eventdetail.name}</span>
+                        <span className="block text-sm text-slate-500">Tickets Sold: {eventdetail.tickets_sold}</span>
+                        <div className="flex justify-between mt-2">
+                            <button className="btn-2" onClick={() => handleEdit(eventdetail)}>EDIT</button>
+                            <button className="btn-2" onClick={() => handleDelete(eventdetail)}>DELETE</button>
+                        </div>
+                    </div>
+            </div>
+        )
     })
-
     return (
         <>
         <div className="mt-6 mx-40 text-center">
-            <h2 className="text-xl font-semibold text-red-500 uppercase">Add / Edit Form </h2>
-            <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+            <h2 className="text-xl font-semibold text-red-500 uppercase">Add / Edit Event </h2>
+                {/* Method 1 */}
+            {/* <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
                 {() => (
                     <Form className="content-center">
                         <div className="field">
@@ -52,7 +90,7 @@ export default function Admin(){
                         </div>
 
                         <div className="field">
-                            <Field name="time" placeholder="Event Time" className="input-field"/>
+                            <Field name="time" placeholder="Event Time Eg. 08:00 AM - 05:00 PM" className="input-field"/>
                             <ErrorMessage name="time" component="span" className="text-red-500" />
                             
                         </div>
@@ -83,23 +121,41 @@ export default function Admin(){
                     </Form>
                 )}
                 
-            </Formik>
+            </Formik> */}
+
+            <form className="mt-5 my-2" onSubmit={formik.handleSubmit }>
+                <input type="text" name="name" className="input-field" placeholder="Event Name" value={formik.values.name} onChange={formik.handleChange} required/>
+                    <div className="error"></div>
+                <input type="date" name="date" className="input-field" placeholder="Event Date" value={formik.values.date} onChange={formik.handleChange} required/>  
+                    <div className="error"></div>
+                <input type="text" name="time" className="input-field" placeholder="Enter Time Eg. 8:00AM - 6.00PM" value={formik.values.time} onChange={formik.handleChange} required/>  
+                    <div className="error"></div>
+                <input type="number" name="duration" className="input-field" placeholder="Duration of Event" value={formik.values.duration} onChange={formik.handleChange} required/> 
+                    <div className="error"></div>
+                <input type="text" name="image_url" className="input-field" placeholder="Enter Image URL" value={formik.values.image_url} onChange={formik.handleChange} required/>  
+                    <div className="error"></div>
+                <input type="number" name="available_tickets" className="input-field" placeholder="Enter Tickets Avaliable" value={formik.values.available_tickets} onChange={formik.handleChange} required/>  
+                    <div className="error"></div>
+                <input type="text" name="venue" className="input-field" placeholder="Enter Venue" value={formik.values.venue} onChange={formik.handleChange} required/>  
+                    <div className="error"></div>
+                <div className="flex justify-between">
+                    <button type="reset" className="btn" onClick={formik.resetForm}>RESET</button>
+                    <button type="submit" className="btn">{addOrEdit ? "ADD EVENT" : "EDIT EVENT"}</button>
+                </div>
+            </form>
+
+            <hr className="mt-4"></hr>
         </div>
+
         <div className="mx-40 m-auto">
             <div className="event-grid">
-                <div className="grid-card">
-                    <img src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg"></img>
-                    <div className="text-center">
-                        <span className="block font-bold">Gordons FunFair uncoupled</span>
-                        <div className="flex justify-between mt-2">
-                            <button className="btn">EDIT</button>
-                            <button className="btn">DELETE</button>
-                        </div>
-                    </div>
-                </div>
+                {events}
             </div>
         </div>
-        <hr className="mt-2 " />
+        <hr className="mt-4" id="page"/>
+        <div className="p-4 rounded-sm m-2">
+                <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
+            </div>
         </>
     )
 }

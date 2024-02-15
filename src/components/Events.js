@@ -1,23 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom"
-
-import React, { useEffect, useState } from "react"
-export default function Events(){
-    const [allEvents,setAllEvents]=useState([])
-    useEffect(()=>{
-        fetchData()
-    },[])
-const fetchData=async()=>{
-    try {
-        const response=await fetch("http://localhost:3000/events")
-        const theEvents=await response.json() 
-        setAllEvents(theEvents)
-        
-    } catch (error) {
-        console.log("failed to fetch",error.statustext)
-    }}
-    console.log(allEvents)
-
+import { useEffect, useState } from "react"
+import Pagination from "./Pagination";
+export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage}){
     return (
         <>
             <div className="mx-40 m-auto">
@@ -32,7 +17,7 @@ const fetchData=async()=>{
                 <hr className="mt-2 " />
                 {/* component for displaying the bought tickets  */}
 
-                <h1 className="text-center font-bold text-red-500 text-xl">Bought Tickets</h1>
+                <h1 className="text-center font-bold text-red-500 text-xl">Your Tickets</h1>
                 <div className="event-grid">
                     <div className="bg-red-200 p-2 rounded-md shadow-md overflow-hidden relative">
 
@@ -54,22 +39,28 @@ const fetchData=async()=>{
                
                 
                 <h1 className="text-center font-bold text-red-500 text-xl">Available Tickets</h1>
-                <div className="event-grid">
-                     {allEvents.map((event)=>{
-                        return(                       
-                    <div className="grid-card" key={event.id} >
-                      <img src={event.image_url} alt="event poster" className="h-60 "/>                        
-                        <div className="text-center" >
-                            <span className="block" >{event.date} </span>
-                            <span className="block font-bold" >{event.name}</span>
+                <hr className="mt-4 text-red-500"/>
+                    <div className="event-grid">
+                        {allEvents.map((event)=>{
+                            return(                       
+                        <div className="grid-card" key={event.id} >
+                        <img src={event.image_url} alt="event poster" className="h-auto grayscale hover:grayscale-0 transition duration-500"/>                        
+                            <div className="text-center mt-2" >
+                                <span className="block">Date: {event.date} </span>
+                                <span className="block font-bold" >{event.name}</span>
+                                <span className="block text-sm text-slate-500">Tickets Remaining {event.available_tickets}</span>
+                                <button className="btn-2"><Link to={"" + event.id}>VIEW EVENT</Link></button>
+                            </div>
                         </div>
-                    </div>
-                     )
-                    })}
-
-                    
+                        )
+                        })}
+        
                 </div>
                 
+                </div>
+                <hr id="page" className="mt-4"></hr>
+                <div className="p-2 rounded-sm m-2">
+                    <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
                 </div>
 
                 
