@@ -1,6 +1,5 @@
 import { useFormik} from "formik";
 import { useState } from "react";
-import * as Yup from "yup";
 import Pagination from "./Pagination";
 
 export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerPage, totalPosts, paginate, currentPage}){
@@ -59,7 +58,7 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
     const events = allEvents.map(eventdetail => {
         return (
             <div key={eventdetail.id} className="grid-card">
-                    <img src={eventdetail.image_url} />
+                    <img src={eventdetail.image_url} alt="poster"/>
                     <div className="text-center mt-2">
                         <span className="block font-bold">{eventdetail.name}</span>
                         <span className="block text-sm text-slate-500">Tickets Sold: {eventdetail.tickets_sold}</span>
@@ -152,10 +151,11 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
                 {events}
             </div>
         </div>
-        <hr className="mt-4" id="page"/>
+        <hr className="mt-4 mx-40"/>
         <div className="p-4 rounded-sm m-2">
                 <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
-            </div>
+        </div>
+        <hr className="mt-4" id="page"/>
         </>
     )
 }
