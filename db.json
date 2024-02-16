@@ -7,7 +7,7 @@
       "time": "06:00 PM - 11:00 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/WhatsApp_Image_2024-02-07_at_21.17.54.jpeg1707330449.jpg",
-      "available_tickets": 1300,
+      "available_tickets": 1299,
       "tickets_sold": 780,
       "venue": "Sarit - Park C",
       "bought_tickets": 1
@@ -30,9 +30,10 @@
       "time": "04:00 PM - 11:59 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/Capital_FM.jpeg1707140613.jpg",
-      "available_tickets": 19,
+      "available_tickets": 17,
       "tickets_sold": 133,
-      "venue": "Padle Kenya, Gigiri Kenya"
+      "venue": "Padle Kenya, Gigiri Kenya",
+      "bought_tickets": 1
     },
     {
       "id": 4,
@@ -218,7 +219,7 @@
       "time": "04:00 PM - 09:00 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/FUSE_FUSION.png1707743056.jpg",
-      "available_tickets": 200,
+      "available_tickets": 199,
       "tickets_sold": 34,
       "venue": "The Beer District"
     }

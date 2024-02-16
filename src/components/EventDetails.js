@@ -7,6 +7,7 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
     //Bug .. // All events is lost when page is refreshed!!
     const myId= useParams()
     const pageId = parseInt(myId.id)
+    console.log(pageId, "Events is", allEvents)
 
 
     const[event, setEventDetail]=useState({})

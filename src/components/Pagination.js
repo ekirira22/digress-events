@@ -54,7 +54,7 @@ export default function Pagination({postsPerPage, totalPosts, currentPage, pagin
               {pageNumbers.map(page => {
                 // <IconButton {...getItemProps(page)}>
                 // </IconButton>
-                return  <a onClick={() => paginate(page)} href="#page">{page}</a> 
+                return  <a key={page} onClick={() => paginate(page)} href="#page">{page}</a> 
               })}
             </div>
           <Button
