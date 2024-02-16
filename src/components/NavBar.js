@@ -1,16 +1,16 @@
 import React from "react"
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../DigressEvents.png"
 
 export default function NavBar({setSearchValue}){
     
     return (
         <>
-            <div className="m-auto mx-40 bg-transparent rounded-md p-2 shadow-md">
+            <div className="m-auto mx-10  bg-transparent rounded-md px-10 shadow-md">
                 <nav className="grid grid-cols-3 items-center grid-flow-row-dense text-center">
                 
                     <div>
-                        <img src={logo} alt="Logo" height="80px" width="100px"></img>
+                       <Link to ="/"><img src={logo} alt="Logo" height="80px" width="100px"></img></Link>
                     </div>   
 
                     {/* Search bar component    */}

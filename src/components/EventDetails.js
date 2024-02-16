@@ -1,48 +1,35 @@
-import React, { useEffect, useState } from "react"
 import {useParams, Link} from "react-router-dom"
 
 
 export default function EventDetails({allEvents, onEdit, boughtTickets, setBoughtTickets}){
-    // console.log(allEvents)
-    //Bug .. // All events is lost when page is refreshed!!
     const myId= useParams()
     const pageId = parseInt(myId.id)
-    console.log(pageId, "Events is", allEvents)
-
-
-    const[event, setEventDetail]=useState({})
-    const [soldOut, setSoldOut] = useState(false)
-
     
-    useEffect(()=>{
-        const eventDetail= allEvents.filter((event)=> {
-            return event.id === pageId
+
+        //Store data when first loaded in SessionStorage
+    if(allEvents.length > 1){
+        const eventDetail= allEvents.filter((storedEvent)=> {
+            return storedEvent.id === pageId
         })
-        setEventDetail(eventDetail[0])
-        if(event.available_tickets < 1){
-            setSoldOut(true)
-        }
-    }, [pageId])
-
-   
-
-   const handleBuyClick = async(event)=> {
-        if(event.available_tickets > 0){ 
+        sessionStorage.setItem('key', JSON.stringify(eventDetail))
+    }
+        //To retrieve, store in a variable
+   const storedEvent = JSON.parse(sessionStorage.getItem('key'))
+   const handleBuyClick = async(storedEvent)=> {
+        if(storedEvent.available_tickets > 0){ 
             alert("Thank you for purchasing with Digress Events")
 
-            const new_tickets = event.available_tickets - 1
-            const updatedTicket = {...event, available_tickets : new_tickets, tickets_sold : event.tickets_sold += 1}
+            const new_tickets = storedEvent.available_tickets - 1
+            const updatedTicket = {...storedEvent, available_tickets : new_tickets, tickets_sold : storedEvent.tickets_sold += 1}
             
-            setEventDetail(updatedTicket)
+            // setEventDetail(updatedTicket)
                 //Updates Component and DB
             await onEdit(updatedTicket, pageId)
-                //Updates bought event to component in Buy Tickets and number of tickets
+                //Updates bought storedEvent to component in Buy Tickets and number of tickets
             boughtTicketsFn(updatedTicket)
         }else{
-            setSoldOut(true)
-           const updatedTicket = {...event, available_tickets : "Sold Out"}
+           const updatedTicket = {...storedEvent, available_tickets : "Sold Out"}
            await onEdit(updatedTicket, pageId)
-
         } 
 
     function boughtTicketsFn(updatedTicket){
@@ -63,9 +50,6 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                     return ticket.bought_tickets += 1
                 }
             })
-            
-            // Map through component again and update
-
         }
        
     }
@@ -78,8 +62,8 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                     
                     <div className="flex items-center justify-between">
                         <button className="mt-4 bg-red-500 text-white px-3 pb-1 rounded-full"><span className="text-2xl font-bold">&#171; </span><span className="text-sm font-semibold"></span><Link to={`/events`}>GO BACK</Link></button>
-                        <h2 className="text-xl uppercase font-bold">{event.name}</h2>
-                        <button onClick={()=> handleBuyClick(event)} className="btn" {...soldOut ? "disabled" : ""}>{soldOut ? "SOLD OUT" : "BUY TICKET"}</button>
+                        <h2 className="text-xl uppercase font-bold">{storedEvent[0].name}</h2>
+                        <button onClick={()=> handleBuyClick(storedEvent[0])} className={storedEvent[0].available_tickets < 1 ? "btn disabled:opacity-50" : "btn"}>{storedEvent[0].available_tickets < 1 ? "SOLD OUT" : "BUY TICKET"}</button>
                     </div>
 
                     <hr className="mt-4"/>
@@ -88,24 +72,24 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                     <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 gap-16">
                         <div>
                             <div className="overflow-hidden">
-                             <img src={event.image_url} alt="event" className="rounded-sm"></img>
+                             <img src={storedEvent[0].image_url} alt="storedEvent" className="rounded-sm"></img>
                             </div>
                         </div>
                         <div className="space-y-6 pt-10">
                             <p className="text-lg">
-                               <span className="font-semibold text-red-400">Duration: </span> {event.duration} Days
+                               <span className="font-semibold text-red-400">Duration: </span> {storedEvent[0].duration} Days
                             </p>
                             <p className="text-lg">
-                               <span className="font-semibold text-red-400">Date: </span> {event.date}
+                               <span className="font-semibold text-red-400">Date: </span> {storedEvent[0].date}
                             </p>
                             <p className="text-lg">
-                               <span className="font-semibold text-red-400">Time: </span> {event.time}
+                               <span className="font-semibold text-red-400">Time: </span> {storedEvent[0].time}
                             </p>
                             <p className="text-lg">
-                               <span className="font-semibold text-red-400">Available Tickets: </span> {event.available_tickets}
+                               <span className="font-semibold text-red-400">Available Tickets: </span> {storedEvent[0].available_tickets}
                             </p>   
                             <p className="text-lg">
-                               <span className="font-semibold text-red-400">Venue: </span> {event.venue}
+                               <span className="font-semibold text-red-400">Venue: </span> {storedEvent[0].venue}
                             </p>  
                         </div>
                     </div>

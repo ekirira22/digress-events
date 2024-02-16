@@ -19,14 +19,14 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
             tickets_sold: 0,
             venue : ""
         },
-        onSubmit : values => {
+        onSubmit : async(values) => {
             if(addOrEdit){
                     //Pass values to callback, reset Form
-                onAdd(values)
+                await onAdd(values)
                 formik.resetForm()
             }else{
                     //Pass values to callback, reset Form, set Add Form to true
-                onEdit(values,editID)
+                await onEdit(values,editID)
                 formik.resetForm()
                 setAddOrEdit(true)
             }
@@ -62,6 +62,7 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
                     <div className="text-center mt-2">
                         <span className="block font-bold">{eventdetail.name}</span>
                         <span className="block text-sm text-slate-500">Tickets Sold: {eventdetail.tickets_sold}</span>
+                        <span className="block text-sm text-green-500 mt-2">Cash Earned: KES {eventdetail.tickets_sold * 1500}</span>
                         <div className="mt-2">
                             <button className="btn-2 top-2 left-4 absolute" onClick={() => handleEdit(eventdetail)}>EDIT</button>
                             <button className="btn-2 top-2 right-4 absolute" onClick={() => handleDelete(eventdetail)}>DELETE</button>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom"
 import Pagination from "./Pagination";
 export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage, boughtTickets}){
+        
     const [ticketToggle, setTicketToggle] = useState(false)
     useEffect(() => {
         if(boughtTickets.length > 0){

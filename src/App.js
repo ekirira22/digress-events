@@ -18,8 +18,6 @@ function App() {
   const [allEvents, setAllEvents] = useState([])
   const [boughtTickets, setBoughtTickets] = useState([])
   const [stateSearchValue, setStateSearchValue] = useState('')
-  console.log(boughtTickets)
-
     //Set Errors
   const [errors, setErrors] = useState('')
 
