@@ -30,9 +30,11 @@ code {
 .event-image{
   @apply w-full h-60 sm:h-72 object-cover grayscale hover:grayscale-0 transition duration-500
 }
-
+.bought-event-image{
+  @apply w-full object-cover grayscale hover:grayscale-0 transition duration-500
+}
 .bought-grid{
-  @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 items-center gap-4 grid-flow-dense h-fit
+  @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 items-center gap-4 h-1/4
 }
 
 .bought-card-grid{

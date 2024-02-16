@@ -2,22 +2,29 @@ import React from "react"
 import { NavLink } from "react-router-dom";
 import logo from "../DigressEvents.png"
 
-export default function NavBar(){
+export default function NavBar({setSearchValue}){
     
     return (
         <>
-            <div className="m-auto mx-40 mt-4 bg-cyan-100 rounded-md p-2 shadow-md">
-                <nav className="flex justify-between items-center">
+            <div className="m-auto mx-40 bg-transparent rounded-md p-2 shadow-md">
+                <nav className="grid grid-cols-3 items-center grid-flow-row-dense text-center">
                 
                     <div>
                         <img src={logo} alt="Logo" height="80px" width="100px"></img>
                     </div>   
 
-                    <div className="px-2 space-x-6 font-semibold text-md mt-3 uppercase leading-normal">
-                        <NavLink to="/">Home</NavLink>
-                       <NavLink to="/events">Events</NavLink>
-                       <NavLink to="/admin">Admin</NavLink>
-                       <NavLink to="/about">About</NavLink>
+                    {/* Search bar component    */}
+                    <div className="text-center">
+                        <form>
+                            <input type="text" placeholder="Search for Event or Venue" className="px-2 h-10 w-full outline-cyan-200" onChange={(e) => setSearchValue(e.target.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase())} />
+                        </form>
+                    </div>
+
+                    <div className="px-2 space-x-6 font-semibold text-md uppercase leading-normal">
+                       <NavLink to="/" className="hover:text-red-500 transition duration-200">Home</NavLink>
+                       <NavLink to="/events" className="hover:text-red-500 transition duration-200">Events</NavLink>
+                       <NavLink to="/admin" className="hover:text-red-500 transition duration-200">Admin</NavLink>
+                       <NavLink to="/about" className="hover:text-red-500 transition duration-200">About</NavLink>
                        
                     </div>
                 </nav>

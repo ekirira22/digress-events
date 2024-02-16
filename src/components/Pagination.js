@@ -12,15 +12,6 @@ export default function Pagination({postsPerPage, totalPosts, currentPage, pagin
   }
 
   //Buttons & Icons
-  const getItemProps = (index) =>
-    ({
-      className: active === index ? "bg-black text-red-400 text-xl font-bold" : "text",
-      variant: "text",
-      color: "black",
-      key: index,
-      onClick: () => setActive(index),
-    });
- 
   const next = () => {
     if (active === pageNumbers.length){
       return
@@ -54,7 +45,7 @@ export default function Pagination({postsPerPage, totalPosts, currentPage, pagin
               {pageNumbers.map(page => {
                 // <IconButton {...getItemProps(page)}>
                 // </IconButton>
-                return  <a key={page} onClick={() => paginate(page)} href="#page">{page}</a> 
+                return  <a key={page} onClick={() => {paginate(page); setActive(page)}} href="#page" className={page === active ? "bg-black rounded-full text-red-400 text-xl font-bold px-2" : null}>{page}</a> 
               })}
             </div>
           <Button

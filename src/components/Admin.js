@@ -108,7 +108,7 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
         <div className="p-4 rounded-sm m-2">
                 <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
         </div>
-        <hr className="mt-4" id="page"/>
+        <hr className="mt-2 mx-40 m-auto" id="page" />
         </>
     )
 }

@@ -26,22 +26,22 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
 
    
 
-   const handleBuyClick = (event)=> {
+   const handleBuyClick = async(event)=> {
         if(event.available_tickets > 0){ 
-            
+            alert("Thank you for purchasing with Digress Events")
+
             const new_tickets = event.available_tickets - 1
-            const updatedTicket = {...event, available_tickets : new_tickets}
+            const updatedTicket = {...event, available_tickets : new_tickets, tickets_sold : event.tickets_sold += 1}
             
             setEventDetail(updatedTicket)
                 //Updates Component and DB
-            onEdit(updatedTicket, pageId)
+            await onEdit(updatedTicket, pageId)
                 //Updates bought event to component in Buy Tickets and number of tickets
             boughtTicketsFn(updatedTicket)
-            alert("Thank you for purchasing with Digress Events")
         }else{
             setSoldOut(true)
            const updatedTicket = {...event, available_tickets : "Sold Out"}
-           onEdit(updatedTicket, pageId)
+           await onEdit(updatedTicket, pageId)
 
         } 
 
