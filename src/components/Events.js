@@ -29,7 +29,7 @@ export default function Events({allEvents, postsPerPage, totalPosts, paginate, c
                                         <span className="block">Date : {ticket.time}</span>
                                         <span className="block font-bold bottom-2 left-1 p-1 rounded-sm absolute bg-cyan-700 text-white text-sm">{ticket.name}</span>
                                     </div>
-                                    <div className="bg-cyan-700 px-4 rounded-sm text-white top-0 right-0 mt-2 mr-2 absolute">
+                                    <div className="bg-cyan-700 px-4 rounded-sm text-white top-0 right-0 absolute">
                                         <span className="text-sm"> {ticket.bought_tickets} Ticket(s)</span>
                                     </div>
                                 </div>

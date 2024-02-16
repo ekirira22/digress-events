@@ -38,7 +38,12 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                 //Updates bought event to component in Buy Tickets and number of tickets
             boughtTicketsFn(updatedTicket)
             alert("Thank you for purchasing with Digress Events")
-    } 
+        }else{
+            setSoldOut(true)
+           const updatedTicket = {...event, available_tickets : "Sold Out"}
+           onEdit(updatedTicket, pageId)
+
+        } 
 
     function boughtTicketsFn(updatedTicket){
         //First check if the tickets already exists in bought tickets

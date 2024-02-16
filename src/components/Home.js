@@ -1,7 +1,7 @@
 export default function Home(){
     return (
         <>
-            <div>
+            <div className="mx-40 m-auto">
                 Home 
             </div>
         </>
