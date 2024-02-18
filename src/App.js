@@ -16,17 +16,31 @@ function App() {
 
   //Set the state 
   const [allEvents, setAllEvents] = useState([])
+  const [boughtTickets, setBoughtTickets] = useState([])
+  const [stateSearchValue, setStateSearchValue] = useState('')
     //Set Errors
   const [errors, setErrors] = useState('')
+
   useEffect(() => {
     const response = DataFetch(API, "GET")
     response.then(events => setAllEvents(events))
   },[])
 
+  useEffect(() => {
+    //FILTER EVENTS AND SET ALL EVENTS TO RESULTS
+      //Filter transactions and pass value to the Transactions component //Filters based on category or description
+      const filteredEvents = allEvents.filter((event) => {
+        if(event.name.toLowerCase().includes(stateSearchValue) || event.venue.toLowerCase().includes(stateSearchValue)){
+          return true
+        }
+      })
+      setAllEvents(filteredEvents)
+  },[stateSearchValue])
+
 
       //PAGINATION STATES
     const [currentPage, setCurrentPage] = useState(1)
-    const [postsPerPage, setPostsPerPage] = useState(6)
+    const [postsPerPage, setPostsPerPage] = useState(4)
       //WE CALCULATE PAGES BASED ON THE ABOVE
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirsPost = indexOfLastPost - postsPerPage
@@ -35,8 +49,6 @@ function App() {
       //Set Page Number and How many pages to view
     const paginate = (number) => setCurrentPage(number)
     // const changePosts = (number) => setPostsPerPage(number)
-
-
 
     //CRUD FUNCTIONS
 
@@ -96,12 +108,12 @@ function App() {
   return (
     <>
       {errors.length > 1 ? <p className="error mx-40 m-auto">{errors}</p> : null}
-      <NavBar />
+      <NavBar setSearchValue={setStateSearchValue} />
       <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<About />} />
-      <Route exact path='/events' element={<Events allEvents={currentEvents} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>}/> 
-      <Route path='/events/:id' element={<EventDetails />}/>
+      <Route exact path='/events' element={<Events boughtTickets={boughtTickets} allEvents={currentEvents} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>}/> 
+      <Route path='/events/:id' element={<EventDetails allEvents={allEvents} onEdit={onEdit} boughtTickets={boughtTickets} setBoughtTickets={setBoughtTickets} />}/>
       <Route path='/admin' element={<Admin allEvents={currentEvents} handleDelete={handleDelete} onAdd={onAdd} onEdit={onEdit} postsPerPage={postsPerPage} totalPosts={allEvents.length} paginate={paginate} currentPage={currentPage}/>} />
       
       </Routes>

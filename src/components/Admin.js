@@ -19,14 +19,14 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
             tickets_sold: 0,
             venue : ""
         },
-        onSubmit : values => {
+        onSubmit : async(values) => {
             if(addOrEdit){
                     //Pass values to callback, reset Form
-                onAdd(values)
+                await onAdd(values)
                 formik.resetForm()
             }else{
                     //Pass values to callback, reset Form, set Add Form to true
-                onEdit(values,editID)
+                await onEdit(values,editID)
                 formik.resetForm()
                 setAddOrEdit(true)
             }
@@ -57,14 +57,15 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
         //Maps through and displays all the events from component passed down from App.js
     const events = allEvents.map(eventdetail => {
         return (
-            <div key={eventdetail.id} className="grid-card">
-                    <img src={eventdetail.image_url} alt="poster"/>
+            <div key={eventdetail.id} className="grid-card relative">
+                    <img src={eventdetail.image_url} alt="poster" className="event-image"/>
                     <div className="text-center mt-2">
                         <span className="block font-bold">{eventdetail.name}</span>
                         <span className="block text-sm text-slate-500">Tickets Sold: {eventdetail.tickets_sold}</span>
-                        <div className="flex justify-between mt-2">
-                            <button className="btn-2" onClick={() => handleEdit(eventdetail)}>EDIT</button>
-                            <button className="btn-2" onClick={() => handleDelete(eventdetail)}>DELETE</button>
+                        <span className="block text-sm text-green-500 mt-2">Cash Earned: KES {eventdetail.tickets_sold * 1500}</span>
+                        <div className="mt-2">
+                            <button className="btn-2 top-2 left-4 absolute" onClick={() => handleEdit(eventdetail)}>EDIT</button>
+                            <button className="btn-2 top-2 right-4 absolute" onClick={() => handleDelete(eventdetail)}>DELETE</button>
                         </div>
                     </div>
             </div>
@@ -74,53 +75,6 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
         <>
         <div className="mt-6 mx-40 text-center">
             <h2 className="text-xl font-semibold text-red-500 uppercase">Add / Edit Event </h2>
-                {/* Method 1 */}
-            {/* <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
-                {() => (
-                    <Form className="content-center">
-                        <div className="field">
-                            <Field name="name" placeholder="Event Name" className="input-field" />
-                            <ErrorMessage name="name" component="span" className="text-red-500" />
-                        </div>
-
-                        <div className="field">
-                            <Field name="date" placeholder="Event Date: Eg. 2024-02-25" className="input-field" />
-                            <ErrorMessage name="date" component="span" className="text-red-500" />
-                        </div>
-
-                        <div className="field">
-                            <Field name="time" placeholder="Event Time Eg. 08:00 AM - 05:00 PM" className="input-field"/>
-                            <ErrorMessage name="time" component="span" className="text-red-500" />
-                            
-                        </div>
-
-                        <div className="field">
-                            <Field name="duration" placeholder="Event Duration" className="input-field" />
-                            <ErrorMessage name="duration" component="span" className="text-red-500" />
-                            
-                        </div>
-
-                        <div className="field">
-                            <Field name="image_url" placeholder="Event Poster" className="input-field" />
-                            <ErrorMessage name="image_url" component="span" className="text-red-500" />
-                            
-                        </div>
-
-                        <div className="field">
-                            <Field name="available_tickets" placeholder="Available Tickets" className="input-field" />
-                            <ErrorMessage name="available_tickets" component="span" className="text-red-500" />
-                            
-                        </div>
-
-                        <div className="field">
-                            <Field name="venue" placeholder="Event Venue" className="input-field" />
-                            <ErrorMessage name="venue" component="span" className="text-red-500" />
-                        </div>
-                        <button type="submit" className="btn">SUBMIT</button>
-                    </Form>
-                )}
-                
-            </Formik> */}
 
             <form className="mt-5 my-2" onSubmit={formik.handleSubmit }>
                 <input type="text" name="name" className="input-field" placeholder="Event Name" value={formik.values.name} onChange={formik.handleChange} required/>
@@ -155,7 +109,7 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
         <div className="p-4 rounded-sm m-2">
                 <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
         </div>
-        <hr className="mt-4" id="page"/>
+        <hr className="mt-2 mx-40 m-auto" id="page" />
         </>
     )
 }

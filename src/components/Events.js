@@ -1,70 +1,73 @@
-import React from "react";
-import { Link } from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom"
 import Pagination from "./Pagination";
-export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage}){
+export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage, boughtTickets}){
+        
+    const [ticketToggle, setTicketToggle] = useState(false)
+    useEffect(() => {
+        if(boughtTickets.length > 0){
+            setTicketToggle(true)
+        }
+    },[boughtTickets])
     return (
         <>
-            <div className="mx-40 m-auto">
-                {/* Search bar component    */}
-                <div className="text-center mt-4">
-                    <form>
-                        <input type="text" placeholder="Search for Event" className="px-2 w-1/2 h-10 outline-cyan-200" />
-                        <button className="btn">Submit</button>
-                    </form>
-                </div>
+            <div>
+                <div className="mx-40 m-auto">
+                        {/* component for displaying the bought tickets  */}
 
-                <hr className="mt-2 " />
-                {/* component for displaying the bought tickets  */}
+                    {ticketToggle ? <h1 className="text-center font-bold text-red-500 text-xl mt-10">Your Tickets</h1> : null}
 
-                <h1 className="text-center font-bold text-red-500 text-xl">Your Tickets</h1>
-                <div className="event-grid">
-                    <div className="bg-red-200 p-2 rounded-md shadow-md overflow-hidden relative">
+                    <div className="bought-grid">
+                        {boughtTickets.map(ticket => {
+                            return (
+                                <div key={ticket.id} className="bought-card-grid">
+                                    <div>
+                                        <Link to={`/events/${ticket.id}`}><img alt="Poster" src={ticket.image_url} className="bought-event-image"/></Link>
+                                    </div>
+                                    <div className="text-center">
+                                        <span className="block">Date : {ticket.time}</span>
+                                        <span className="block font-bold bottom-2 left-1 p-1 rounded-sm absolute bg-cyan-700 text-white text-sm">{ticket.name}</span>
+                                    </div>
+                                    <div className="bg-cyan-700 px-4 rounded-sm text-white top-0 right-0 absolute">
+                                        <span className="text-sm"> {ticket.bought_tickets} Ticket(s)</span>
+                                    </div>
+                                </div>
+                            )
+                        })}
 
-                            <div>
-                                <img alt="Poster" src="https://www.ticketsasa.com/components/com_enmasse/upload/Gordons_Save_the_Date_IG_Post_1080x1080_a-01.png1706010580.jpg" />
-                            </div>
-                            <div className="text-center">
-                                <span className="block">Date : 2024-03-14</span>
-                                <span className="block font-bold">Gordons FunFair uncoupled</span>
-                            </div>
-                            <div className="bg-cyan-400 px-4 rounded-full text-white top-0 right-0 mt-2 mr-2 absolute">
-                                <span> 10 </span>
-                            </div>
                     </div>
 
-                </div>
-
-                {/* Tickets Display component -- Use grid formatting*/}
-               
+                    {/* Tickets Display component -- Use grid formatting*/}
                 
-                <h1 className="text-center font-bold text-red-500 text-xl">Available Tickets</h1>
-                <hr className="mt-4 text-red-500"/>
-                    <div className="event-grid">
-                        {allEvents.map((event)=>{
-                            return(                       
-                        <div className="grid-card" key={event.id} >
-                        <img src={event.image_url} alt="event poster" className="h-auto grayscale hover:grayscale-0 transition duration-500"/>                        
-                            <div className="text-center mt-2" >
-                                <span className="block">Date: {event.date} </span>
-                                <span className="block font-bold" >{event.name}</span>
-                                <span className="block text-sm text-slate-500">Tickets Remaining {event.available_tickets}</span>
-                                <button className="btn-2"><Link to={"" + event.id}>VIEW EVENT</Link></button>
+                    
+                    <h1 className="text-center font-bold text-red-500 text-xl mt-6">Available Tickets</h1>
+                    <hr className="mt-4 text-red-500"/>
+                        <div className="event-grid">
+                            {allEvents.map((event)=>{
+                                return(                       
+                            <div className="grid-card relative" key={event.id} >
+                            <img src={event.image_url} alt="event poster" className="event-image"/>                        
+                                <div className="text-center mt-2" >
+                                    <span className="block">Date: {event.date} </span>
+                                    <span className="block font-bold" >{event.name}</span>
+                                    <span className="block text-sm text-slate-500 mb-2">Tickets Remaining: {event.available_tickets}</span>
+                                    <button className="btn-2 top-0 left-4 absolute"><Link to={"/events/" + event.id}>VIEW EVENT</Link></button>
+                                </div>
                             </div>
-                        </div>
-                        )
-                        })}
-        
-                </div>
-                
+                            )
+                            })}
+            
+                    </div>
+                    
                 </div>
 
                 <hr className="mt-4 mx-40 m-auto"></hr>
                 <div className="p-2 rounded-sm m-2">
                     <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate} currentPage={currentPage}/>
                 </div>
-                <hr className="mt-2" id="page" />
-
-            
+                <hr className="mt-2 mx-40 m-auto" id="page" />
+            </div>
+            <Outlet />        
         </>
     )
-    }
+}
