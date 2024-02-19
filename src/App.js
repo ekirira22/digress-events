@@ -12,7 +12,7 @@ import DataFetch from "./components/DataFetch"
 
 function App() {
 
-  const API = "https://events-api-fekq.onrender.com/events"
+  const API = "http://localhost:4000/events"
 
   //Set the state 
   const [allEvents, setAllEvents] = useState([])
@@ -36,6 +36,7 @@ function App() {
       })
       setAllEvents(filteredEvents)
   },[stateSearchValue])
+
 
       //PAGINATION STATES
     const [currentPage, setCurrentPage] = useState(1)
