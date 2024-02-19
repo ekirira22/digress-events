@@ -535,40 +535,6 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.container {
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
 .absolute {
   position: absolute;
 }
@@ -593,6 +559,10 @@ video {
   right: 0px;
 }
 
+.right-2 {
+  right: 0.5rem;
+}
+
 .right-4 {
   right: 1rem;
 }
@@ -603,10 +573,6 @@ video {
 
 .top-2 {
   top: 0.5rem;
-}
-
-.right-2 {
-  right: 0.5rem;
 }
 
 .m-2 {
@@ -632,6 +598,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-14 {
+  margin-bottom: 3.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -654,10 +624,6 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.mb-14 {
-  margin-bottom: 3.5rem;
 }
 
 .mt-8 {
@@ -686,14 +652,6 @@ video {
 
 .h-4 {
   height: 1rem;
-}
-
-.h-screen {
-  height: 100vh;
-}
-
-.h-60 {
-  height: 15rem;
 }
 
 .h-80 {
@@ -819,18 +777,8 @@ video {
   background-color: transparent;
 }
 
-.bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
-
-.from-cyan-500 {
-  --tw-gradient-from: #06b6d4 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(6 182 212 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.to-blue-500 {
-  --tw-gradient-to: #3b82f6 var(--tw-gradient-to-position);
+.p-0 {
+  padding: 0px;
 }
 
 .p-1 {
@@ -843,10 +791,6 @@ video {
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-0 {
-  padding: 0px;
 }
 
 .px-10 {
@@ -921,10 +865,6 @@ video {
   line-height: 1.5;
 }
 
-.leading-loose {
-  line-height: 2;
-}
-
 .text-cyan-500 {
   --tw-text-opacity: 1;
   color: rgb(6 182 212 / var(--tw-text-opacity));
@@ -983,10 +923,6 @@ video {
 
 .duration-500 {
   transition-duration: 500ms;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
 }
 
 body {
