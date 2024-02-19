@@ -12,7 +12,7 @@ import DataFetch from "./components/DataFetch"
 
 function App() {
 
-  const API = "http://localhost:4000/events"
+  const API = "https://events-api-fekq.onrender.com/events"
 
   //Set the state 
   const [allEvents, setAllEvents] = useState([])
