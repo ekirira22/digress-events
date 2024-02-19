@@ -15,15 +15,14 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
         sessionStorage.setItem('eventdetail', JSON.stringify(eventDetail))
     }
         //To retrieve, store in a variable
-   const storedEvent = JSON.parse(sessionStorage.getItem('eventdetail'))
-//    sessionStorage.clear()
+   const storedEvent = JSON.parse(sessionStorage.getItem('eventdetail')) //.json()
    
-   const handleBuyClick = (storedEvent,num)=> {
+   const handleBuyClick = (storedEvent, num) => {
         navigate("/events")
         if(storedEvent.available_tickets > 0){ 
             //Check if number of tickets being ordered is less than available
             if(num > storedEvent.available_tickets){
-                alert(`Only ${storedEvent.available_tickets} tickets remaining`)
+                alert(`Only ${storedEvent.available_tickets} ticket(s) remaining`)
                 return
             }
 
@@ -35,12 +34,13 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                 //Updates Component and DB
             onEdit(updatedTicket, pageId)
                 //Updates bought storedEvent to component in Buy Tickets and number of tickets
-            boughtTicketsFn(updatedTicket,num)
+            boughtTicketsFn(updatedTicket, num)
         }else{
            const updatedTicket = {...storedEvent, available_tickets : "Sold Out"}
            onEdit(updatedTicket, pageId)
         } 
     }
+
     function boughtTicketsFn(updatedTicket,num){
         //First check if the tickets already exists in bought tickets
         //If it doesn't.. add it with an extra key of bought_tickets = 1
@@ -84,8 +84,8 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                     <div className="flex items-center justify-between">
                         <button className="mt-4 bg-red-500 text-white px-3 pb-1 rounded-full"><span className="text-2xl font-bold">&#171; </span><span className="text-sm font-semibold"></span><Link to={`/events`}>GO BACK</Link></button>
                         <h2 className="text-xl uppercase font-bold">{storedEvent[0].name}</h2>
-                        <form className="space-x-4" onSubmit={(e) => {e.preventDefault(); handleBuyClick(storedEvent[0],parseInt(e.target.number.value))}}>
-                            <input type="number" id="number" name="number" min="1" max="50" className="input-field" defaultValue={1}/>  
+                        <form className="space-x-4" onSubmit={(e) => {e.preventDefault(); handleBuyClick(storedEvent[0], parseInt(e.target.number.value))}}>
+                            <input type="number" id="number" min="1" max="50" className="input-field" defaultValue={10}/>  
                             <button type="submit" className={storedEvent[0].available_tickets < 1 ? "btn disabled:opacity-50" : "btn"}>{storedEvent[0].available_tickets < 1 ? "SOLD OUT" : "BUY TICKET"}</button>
                         </form>
                     </div>

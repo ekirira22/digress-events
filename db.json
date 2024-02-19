@@ -7,8 +7,8 @@
       "time": "06:00 PM - 11:00 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/WhatsApp_Image_2024-02-07_at_21.17.54.jpeg1707330449.jpg",
-      "available_tickets": 1222,
-      "tickets_sold": 472,
+      "available_tickets": 1160,
+      "tickets_sold": 534,
       "venue": "Sarit - Park C"
     },
     {
@@ -18,8 +18,8 @@
       "time": "06:00 PM - 11:59 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/images/images.php?src=components/com_enmasse/upload/Comedy_store_Uganda_Art.PNG1707226748.jpg&h=320&w=320&zc=1&q=100&s=1&f=3,5|4,-5",
-      "available_tickets": 16,
-      "tickets_sold": 56,
+      "available_tickets": 2,
+      "tickets_sold": 70,
       "venue": " Uma Show Grounds"
     },
     {
@@ -29,8 +29,8 @@
       "time": "04:00 PM - 11:59 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/Capital_FM.jpeg1707140613.jpg",
-      "available_tickets": 20,
-      "tickets_sold": 157,
+      "available_tickets": 3,
+      "tickets_sold": 174,
       "venue": "Padle Kenya, Gigiri Kenya"
     },
     {
@@ -40,8 +40,8 @@
       "time": "06:00 PM - 11:59 PM",
       "duration": 4,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/IMG-20240202-WA0000.jpg1706872350.jpg",
-      "available_tickets": 1,
-      "tickets_sold": 207,
+      "available_tickets": 0,
+      "tickets_sold": 208,
       "venue": " Simba Corp, Aspire Centre - 206 Chiromo Road"
     },
     {
@@ -150,8 +150,8 @@
       "time": "04:00 PM - 09:00 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/WhatsApp_Image_2024-02-08_at_10.34.24.jpeg1707396013.jpg",
-      "available_tickets": 100,
-      "tickets_sold": 74,
+      "available_tickets": 90,
+      "tickets_sold": 84,
       "venue": "Nairobi Arboretum"
     },
     {
@@ -161,8 +161,8 @@
       "time": "06:00 PM - 11:59 PM",
       "duration": 2,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/WhatsApp_Image_2024-01-30_at_10.29.41.jpeg1706599886.jpg",
-      "available_tickets": 75,
-      "tickets_sold": 121,
+      "available_tickets": 65,
+      "tickets_sold": 131,
       "venue": "Carnivore Simba Saloon, Nairobi"
     },
     {
@@ -194,8 +194,8 @@
       "time": "08:00 AM - 05:00 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/Save_the_date_KE.jpeg1702969299.jpg",
-      "available_tickets": 98,
-      "tickets_sold": 20,
+      "available_tickets": 88,
+      "tickets_sold": 30,
       "venue": "TBC"
     },
     {
@@ -205,12 +205,9 @@
       "time": "04:00 PM - 09:00 PM",
       "duration": 1,
       "image_url": "https://www.ticketsasa.com/components/com_enmasse/upload/FUSE_FUSION.png1707743056.jpg",
-      "available_tickets": 197,
-      "tickets_sold": 34,
+      "available_tickets": 187,
+      "tickets_sold": 44,
       "venue": "The Beer District"
-    },
-    {
-      "id": 21
     }
   ]
 }

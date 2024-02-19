@@ -48,61 +48,52 @@ function App() {
     const currentEvents = allEvents.slice(indexOfFirsPost, indexOfLastPost)
       //Set Page Number and How many pages to view
     const paginate = (number) => setCurrentPage(number)
-    // const changePosts = (number) => setPostsPerPage(number)
 
     //CRUD FUNCTIONS
 
   const handleDelete = async (eventdetail) => {
       //Prompt for confirmation
-      if(!window.confirm(`Are you sure you want to delete ${eventdetail.name} event? `)) return
-          //Delete From Component
-    const remainingEvents = allEvents.filter(event => {
-      return event.id !== eventdetail.id
-    })
-    setAllEvents(remainingEvents)
-      //Delete from Db.json
-    const response = await DataFetch(`${API}/${eventdetail.id}`, "DELETE")
-
-    if(typeof(response !== 'object')){
-      setErrors(response)
-      return
+    if(!window.confirm(`Are you sure you want to delete ${eventdetail.name} event? `)) return
+        //Delete From Component
+    try{
+      const remainingEvents = allEvents.filter(event => {
+        return event.id !== eventdetail.id
+      })
+      setAllEvents(remainingEvents)
+        //Delete from Db.json
+      await DataFetch(`${API}/${eventdetail.id}`, "DELETE")
+    }catch(error){
+      console.log("Error Message", error)
     }
   }
 
   const onAdd = async (eventdetail) => {
-      //Add to current component of events
-    setAllEvents([...allEvents, eventdetail])
+    try{
+          //Add to current component of events
+      setAllEvents([...allEvents, eventdetail])
       //Add to database
-    const response = await DataFetch(`${API}`, "POST")
-
-    if(typeof(response !== 'object')){
-      setErrors(response)
-      return
+      await DataFetch(`${API}`, "POST", eventdetail)
+    }catch(error){
+      console.log("Error Message", error)
     }
-    
   }
 
-  const onEdit = async (eventdetail,id) => {
-      //Add edited event event to current component
-    const sortedEvents = allEvents.map(event => {
-      if(id === event.id){
-        return eventdetail
-      }else{
-        return event
-      }
-    })
-    // console.log(sortedEvents)
-    setAllEvents(sortedEvents)
-
-      //Now update DB
-    
-    const response = await DataFetch(`${API}/${id}`, "PATCH", eventdetail)
-
-    if(typeof(response !== 'object')){
-      setErrors(response)
-      return
+  const onEdit = async (eventdetail, id) => {
+    try{
+        //Add edited event event to current component
+      const sortedEvents = allEvents.map(event => {
+        if(id === event.id){
+          return eventdetail
+        }else{
+          return event
+        }
+      })
+      setAllEvents(sortedEvents)
+        //Now update DB
+      await DataFetch(`${API}/${id}`, "PATCH", eventdetail)
+    }catch(error){
+      console.log("Error Message", error)
     }
-    
   }
   
   return (

@@ -4,17 +4,12 @@ import Pagination from "./Pagination";
 export default function Events({allEvents, postsPerPage, totalPosts, paginate, currentPage, boughtTickets}){
         
     const [ticketToggle, setTicketToggle] = useState(false)
-    let bought = boughtTickets
     useEffect(() => {
         if(boughtTickets.length > 0){
             setTicketToggle(true)
         }
     },[boughtTickets])
-        //SESSION STORAGE FOR TICKETS
-    if(boughtTickets.length > 1){
-        sessionStorage.setItem('boughtticket', JSON.stringify(boughtTickets))
-        bought = JSON.parse(sessionStorage.getItem('boughtticket'))
-    }
+  
     return (
         <>
             <div>
@@ -24,7 +19,7 @@ export default function Events({allEvents, postsPerPage, totalPosts, paginate, c
                     {ticketToggle ? <h1 className="text-center font-bold text-red-500 text-xl mt-10">Your Tickets</h1> : null}
 
                     <div className="bought-grid">
-                        {bought.map(ticket => {
+                        {boughtTickets.map(ticket => {
                             return (
                                 <div key={ticket.id} className="bought-card-grid">
                                     <div>
