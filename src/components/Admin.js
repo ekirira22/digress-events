@@ -3,6 +3,7 @@ import { useState } from "react";
 import Pagination from "./Pagination";
 
 export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerPage, totalPosts, paginate, currentPage}){
+        //Mimicks Login
         //This state will be used to determine if the form is in add mode or edit mode (True => Add Mode False => Edit mode)
     const [addOrEdit, setAddOrEdit] = useState(true)
     const [editID, setEditID] = useState('')
@@ -71,6 +72,7 @@ export default function Admin({allEvents, handleDelete, onAdd, onEdit, postsPerP
             </div>
         )
     })
+
     return (
         <>
         <div className="mt-6 mx-40 text-center">

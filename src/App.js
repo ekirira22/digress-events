@@ -37,7 +37,6 @@ function App() {
       setAllEvents(filteredEvents)
   },[stateSearchValue])
 
-
       //PAGINATION STATES
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(4)

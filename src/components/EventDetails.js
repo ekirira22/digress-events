@@ -1,38 +1,47 @@
-import {useParams, Link} from "react-router-dom"
+import { useState } from "react"
+import {useParams, Link, useNavigate} from "react-router-dom"
 
 
 export default function EventDetails({allEvents, onEdit, boughtTickets, setBoughtTickets}){
+    const navigate = useNavigate()
     const myId= useParams()
     const pageId = parseInt(myId.id)
-    
 
         //Store data when first loaded in SessionStorage
     if(allEvents.length > 1){
         const eventDetail= allEvents.filter((storedEvent)=> {
             return storedEvent.id === pageId
         })
-        sessionStorage.setItem('key', JSON.stringify(eventDetail))
+        sessionStorage.setItem('eventdetail', JSON.stringify(eventDetail))
     }
         //To retrieve, store in a variable
-   const storedEvent = JSON.parse(sessionStorage.getItem('key'))
-   const handleBuyClick = async(storedEvent)=> {
+   const storedEvent = JSON.parse(sessionStorage.getItem('eventdetail'))
+//    sessionStorage.clear()
+   
+   const handleBuyClick = (storedEvent,num)=> {
+        navigate("/events")
         if(storedEvent.available_tickets > 0){ 
-            alert("Thank you for purchasing with Digress Events")
+            //Check if number of tickets being ordered is less than available
+            if(num > storedEvent.available_tickets){
+                alert(`Only ${storedEvent.available_tickets} tickets remaining`)
+                return
+            }
 
-            const new_tickets = storedEvent.available_tickets - 1
-            const updatedTicket = {...storedEvent, available_tickets : new_tickets, tickets_sold : storedEvent.tickets_sold += 1}
+            alert("Thank you for purchasing with Digress Events")
+            const new_tickets = storedEvent.available_tickets - num
+            const updatedTicket = {...storedEvent, available_tickets : new_tickets, tickets_sold : storedEvent.tickets_sold += num}
             
             // setEventDetail(updatedTicket)
                 //Updates Component and DB
-            await onEdit(updatedTicket, pageId)
+            onEdit(updatedTicket, pageId)
                 //Updates bought storedEvent to component in Buy Tickets and number of tickets
-            boughtTicketsFn(updatedTicket)
+            boughtTicketsFn(updatedTicket,num)
         }else{
            const updatedTicket = {...storedEvent, available_tickets : "Sold Out"}
-           await onEdit(updatedTicket, pageId)
+           onEdit(updatedTicket, pageId)
         } 
-
-    function boughtTicketsFn(updatedTicket){
+    }
+    function boughtTicketsFn(updatedTicket,num){
         //First check if the tickets already exists in bought tickets
         //If it doesn't.. add it with an extra key of bought_tickets = 1
         //If it does. Increment existing bought_tickets
@@ -40,21 +49,33 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
             return ticket.id === updatedTicket.id
         })
         if(ticketExists === undefined){
-            updatedTicket.bought_tickets = 1
+            updatedTicket.bought_tickets = num
             // console.table(updatedTicket)
             setBoughtTickets([...boughtTickets, updatedTicket])
         }else{
             //If it exists. Map through and increment bought_tickets by 1
             boughtTickets.map(ticket => {
                 if(ticket.id === updatedTicket.id){
-                    return ticket.bought_tickets += 1
+                    return ticket.bought_tickets += num
                 }
             })
         }
-       
     }
- }
 
+    const attendEvent = () => {
+        //Access the bought tickets and remove the one with the seleceted params ID
+        alert("Thank you for attending!!")
+        const newTickets = boughtTickets.filter(tikiti => {
+            return tikiti.id !== pageId
+        })
+            //Update component
+        setBoughtTickets(newTickets)
+            //Removes Bought Tickets from Database
+        delete storedEvent[0].bought_tickets
+        onEdit(storedEvent[0], pageId)
+
+        navigate("/events")
+    }
     return (
         <>
             <div className="mx-40 m-auto mt-10">
@@ -63,7 +84,10 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                     <div className="flex items-center justify-between">
                         <button className="mt-4 bg-red-500 text-white px-3 pb-1 rounded-full"><span className="text-2xl font-bold">&#171; </span><span className="text-sm font-semibold"></span><Link to={`/events`}>GO BACK</Link></button>
                         <h2 className="text-xl uppercase font-bold">{storedEvent[0].name}</h2>
-                        <button onClick={()=> handleBuyClick(storedEvent[0])} className={storedEvent[0].available_tickets < 1 ? "btn disabled:opacity-50" : "btn"}>{storedEvent[0].available_tickets < 1 ? "SOLD OUT" : "BUY TICKET"}</button>
+                        <form className="space-x-4" onSubmit={(e) => {e.preventDefault(); handleBuyClick(storedEvent[0],parseInt(e.target.number.value))}}>
+                            <input type="number" id="number" name="number" min="1" max="50" className="input-field" defaultValue={1}/>  
+                            <button type="submit" className={storedEvent[0].available_tickets < 1 ? "btn disabled:opacity-50" : "btn"}>{storedEvent[0].available_tickets < 1 ? "SOLD OUT" : "BUY TICKET"}</button>
+                        </form>
                     </div>
 
                     <hr className="mt-4"/>
@@ -75,7 +99,7 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                              <img src={storedEvent[0].image_url} alt="storedEvent" className="rounded-sm"></img>
                             </div>
                         </div>
-                        <div className="space-y-6 pt-10">
+                        <div className="space-y-6 pt-10 relative">
                             <p className="text-lg">
                                <span className="font-semibold text-red-400">Duration: </span> {storedEvent[0].duration} Days
                             </p>
@@ -91,7 +115,11 @@ export default function EventDetails({allEvents, onEdit, boughtTickets, setBough
                             <p className="text-lg">
                                <span className="font-semibold text-red-400">Venue: </span> {storedEvent[0].venue}
                             </p>  
+                            <div className="text-right bottom-2 right-2 absolute">
+                                {storedEvent[0].bought_tickets > 0 ? <button type="submit" className="btn-2" onClick={attendEvent}>ATTEND</button> : null}
+                            </div>
                         </div>
+      
                     </div>
 
                 </div>
